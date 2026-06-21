@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - HandloomHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>HandloomHub</h2>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="checkout-container">
+
+    <h1>Checkout</h1>
+
+    <form id="checkoutForm">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Full Name"
+            required
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            required
+        >
+
+        <input
+            type="text"
+            id="phone"
+            placeholder="Phone Number"
+            required
+        >
+
+        <textarea
+            id="address"
+            placeholder="Shipping Address"
+            required
+        ></textarea>
+
+        <input
+            type="text"
+            id="city"
+            placeholder="City"
+            required
+        >
+
+        <input
+            type="text"
+            id="pincode"
+            placeholder="Pincode"
+            required
+        >
+
+        <select id="paymentMethod" required>
+            <option value="">Select Payment Method</option>
+            <option>Cash on Delivery</option>
+            <option>UPI</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+        </select>
+
+        <button type="submit">
+            Place Order
+        </button>
+
+    </form>
+
+</section>
+
+<script>
+
+document.getElementById("checkoutForm")
+.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const user = JSON.parse(
+        localStorage.getItem("loggedInUser")
+    );
+
+    if (!user) {
+
+        alert("Please Login First");
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+    const name =
+        document.getElementById("name").value;
+
+    const email =
+        document.getElementById("email").value;
+
+    const phone =
+        document.getElementById("phone").value;
+
+    const address =
+        document.getElementById("address").value;
+
+    const city =
+        document.getElementById("city").value;
+
+    const pincode =
+        document.getElementById("pincode").value;
+
+    const paymentMethod =
+        document.getElementById("paymentMethod").value;
+
+    const cart =
+        JSON.parse(localStorage.getItem("cart"))
+        || [];
+
+    if(cart.length === 0){
+
+        alert("Cart is Empty!");
+
+        return;
+    }
+
+    let totalAmount = 0;
+
+    cart.forEach(item => {
+
+        totalAmount +=
+            item.price * item.quantity;
+
+    });
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/orders",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body: JSON.stringify({
+
+                    userId: user.id,
+
+                    products: cart,
+
+                    totalAmount: totalAmount,
+
+                    shippingAddress:
+                        `${address},
+                         ${city},
+                         ${pincode}`,
+
+                    customerName: name,
+
+                    customerEmail: email,
+
+                    customerPhone: phone,
+
+                    paymentMethod: paymentMethod
+
+                })
+            }
+        );
+
+        const data =
+            await response.json();
+
+        if(response.ok){
+
+            localStorage.removeItem("cart");
+
+            alert(
+                "Order Placed Successfully!"
+            );
+
+            window.location.href =
+                "confirmation.html";
+
+        }else{
+
+            alert(data.message);
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Server Error");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

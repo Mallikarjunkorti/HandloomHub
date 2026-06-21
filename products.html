@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - HandloomHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+    <h2>HandloomHub</h2>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+
+        <li>
+            <a href="cart.html">
+                Cart (<span id="cartCount">0</span>)
+            </a>
+        </li>
+
+        <li><a href="login.html">Login</a></li>
+    </ul>
+</nav>
+</header>
+
+<section class="product-page">
+
+    <h1>Our Products</h1>
+
+    <input type="text" id="searchInput" placeholder="Search Products...">
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="images/mysore-silk.jpg" alt="">
+            <h3>Mysore Silk Saree</h3>
+            <p>₹4999</p>
+            <button onclick="addToCart('Mysore Silk Saree',4999,'images/mysore-silk.jpg')"> 
+            Add to Cart
+            </button>
+            <a href="product-details.html">View Details</a>
+        </div>
+
+        <div class="product-card">
+            <img src="images/banarasi.jpg" alt="">
+            <h3>Banarasi Saree</h3>
+            <p>₹6499</p>
+            <button onclick="addToCart('Banarasi Saree',6499,'images/banarasi.jpg')">
+                    Add to Cart
+            </button>
+            <a href="product-details.html">View Details</a>
+        </div>
+
+        <div class="product-card">
+            <img src="images/cotton-fabric.jpg" alt="">
+            <h3>Cotton Fabric</h3>
+            <p>₹899</p>
+            <button onclick="addToCart('Cotton Fabric',899,'images/cotton-fabric.jpg')">Add to Cart</button>
+            <a href="product-details.html">View Details</a>
+        </div>
+
+        <div class="product-card">
+            <img src="images/kurti.jpg" alt="">
+            <h3>Kurti Material</h3>
+            <p>₹1299</p>
+            <button onclick="addToCart('Kurti Material',1299,'images/kurti.jpg')">Add to Cart</button>
+            <a href="product-details.html">View Details</a>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="js/script.js"></script>
+</body>
+</html>

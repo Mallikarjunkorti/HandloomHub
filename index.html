@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandloomHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <h2>HandloomHub</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <span id="welcomeUser"></span>
+            <button onclick="logout()">Logout
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to HandloomHub</h1>
+        <p>Discover Authentic Handloom Products</p>
+        <button>Shop Now</button>
+    </section>
+
+    <section class="products">
+        <h2>Featured Products</h2>
+
+        <div class="product-container">
+
+            <div class="card">
+                <img src="images/mysore-silk.jpg" alt="">
+                <h3>Mysore Silk Saree</h3>
+                <p>₹4999</p>
+            </div>
+
+            <div class="card">
+                <img src="images/banarasi.jpg" alt="">
+                <h3>Banarasi Saree</h3>
+                <p>₹6499</p>
+            </div>
+
+            <div class="card">
+                <img src="images/dupatta.jpg" alt="">
+                <h3>Handloom Dupatta</h3>
+                <p>₹699</p>
+            </div>
+            <div class="card">
+                <img src="images/kurti.jpg" alt="">
+                <h3>Handloom Kurti</h3>
+                <p>₹1299</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 HandloomHub</p>
+    </footer>
+    <script>
+const user = JSON.parse(
+    localStorage.getItem("loggedInUser")
+);
+
+if(user){
+    document.getElementById("welcomeUser").innerText =
+        "Welcome, " + user.name;
+}
+</script>
+<script>
+function logout(){
+
+    localStorage.removeItem("loggedInUser");
+
+    alert("Logged Out");
+
+    window.location.href = "login.html";
+}
+</script>
+</body>
+</html>
