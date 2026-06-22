@@ -45,24 +45,21 @@ if (searchInput) {
 
 function addToCart(name, price, image) {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart =
+        JSON.parse(localStorage.getItem("cart"))
+        || [];
 
-    let existingProduct = cart.find(
-        item => item.name === name
+    cart.push({
+        name,
+        price,
+        image,
+        quantity: 1
+    });
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
     );
-
-    if (existingProduct) {
-        existingProduct.quantity += 1;
-    } else {
-        cart.push({
-            name: name,
-            price: price,
-            image: image,
-            quantity: 1
-        });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCartCount();
 
@@ -204,21 +201,30 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCartCount();
 });
 
-const user =
-    localStorage.getItem("loggedInUser");
+// =========================
+// Logout Link Visibility
+// =========================
 
 const logoutLink =
     document.getElementById("logoutLink");
 
-if (logoutLink && user) {
+if (
+    logoutLink &&
+    localStorage.getItem("loggedInUser")
+) {
     logoutLink.style.display = "block";
 }
+
+// =========================
+// Logout Function
+// =========================
+
 function logout() {
 
-    const user =
+    const loggedInUser =
         localStorage.getItem("loggedInUser");
 
-    if (!user) {
+    if (!loggedInUser) {
 
         alert("No user is currently logged in.");
         return;
