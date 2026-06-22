@@ -2,6 +2,19 @@ console.log("script.js loaded");
 // =========================
 // Product Search
 // =========================
+const user = JSON.parse(
+    localStorage.getItem("loggedInUser")
+);
+
+const adminLink =
+    document.getElementById("adminLink");
+
+if (
+    user &&
+    user.email === "mallikarjunkorti40@gmail.com"
+) {
+    adminLink.style.display = "block";
+}
 
 const searchInput = document.getElementById("searchInput");
 
@@ -190,3 +203,32 @@ document.addEventListener("DOMContentLoaded", function () {
     loadCart();
     updateCartCount();
 });
+
+const user =
+    localStorage.getItem("loggedInUser");
+
+const logoutLink =
+    document.getElementById("logoutLink");
+
+if (logoutLink && user) {
+    logoutLink.style.display = "block";
+}
+function logout() {
+
+    const user =
+        localStorage.getItem("loggedInUser");
+
+    if (!user) {
+
+        alert("No user is currently logged in.");
+        return;
+
+    }
+
+    localStorage.removeItem("loggedInUser");
+
+    alert("Logged Out Successfully");
+
+    window.location.href = "login.html";
+
+}
