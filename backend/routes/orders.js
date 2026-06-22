@@ -43,5 +43,32 @@ router.get("/", async (req, res) => {
     }
 
 });
+router.put("/:id", async (req, res) => {
 
+    try {
+
+        const order = await Order.findByIdAndUpdate(
+            req.params.id,
+            {
+                status: req.body.status
+            },
+            {
+                new: true
+            }
+        );
+
+        res.json({
+            message: "Order Status Updated",
+            order
+        });
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
+
+});
 module.exports = router;
