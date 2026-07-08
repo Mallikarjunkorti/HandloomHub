@@ -372,3 +372,156 @@ table td{
     border:1px solid #ddd;
     padding:10px;
 }
+/* ===========================
+   ADMIN DASHBOARD
+=========================== */
+
+body{
+    background:#f4f6f9;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.admin-nav{
+    background:#1e293b;
+    color:white;
+    padding:18px 40px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.admin-nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+.admin-nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.dashboard{
+    padding:40px;
+}
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-bottom:40px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.users{
+    border-top:5px solid #3b82f6;
+}
+
+.products{
+    border-top:5px solid #22c55e;
+}
+
+.orders{
+    border-top:5px solid #f97316;
+}
+
+.revenue{
+    border-top:5px solid #a855f7;
+}
+
+.card h1{
+
+    font-size:42px;
+
+    margin-top:15px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+    margin-bottom:40px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+table th{
+
+    background:#1e293b;
+
+    color:white;
+
+    padding:15px;
+
+}
+
+table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+button{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 15px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#1d4ed8;
+
+}
+
+select{
+
+    padding:8px;
+
+    border-radius:5px;
+
+}
