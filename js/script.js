@@ -1,43 +1,83 @@
 console.log("script.js loaded");
+
+// =========================
+// Logged In User
+// =========================
+
+const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+
+// =========================
+// Navbar Links
+// =========================
+
+const loginLink = document.getElementById("loginLink");
+const logoutLink = document.getElementById("logoutLink");
+const adminLink = document.getElementById("adminLink");
+
+// Hide Admin by default
+if (adminLink) {
+    adminLink.style.display = "none";
+}
+
+if (user) {
+
+    if (loginLink)
+        loginLink.style.display = "none";
+
+    if (logoutLink)
+        logoutLink.style.display = "block";
+
+    // Show Admin only for Admin account
+    if (
+        adminLink &&
+        user.email === "mallikarjunkorti40@gmail.com"
+    ) {
+        adminLink.style.display = "block";
+    }
+
+} else {
+
+    if (loginLink)
+        loginLink.style.display = "block";
+
+    if (logoutLink)
+        logoutLink.style.display = "none";
+
+    if (adminLink)
+        adminLink.style.display = "none";
+}
+
+
 // =========================
 // Product Search
 // =========================
-const user = JSON.parse(
-    localStorage.getItem("loggedInUser")
-);
-
-const adminLink =
-    document.getElementById("adminLink");
-
-if (
-    user &&
-    user.email === "mallikarjunkorti40@gmail.com"
-) {
-    adminLink.style.display = "block";
-}
 
 const searchInput = document.getElementById("searchInput");
 
 if (searchInput) {
+
     searchInput.addEventListener("keyup", function () {
 
         let filter = searchInput.value.toLowerCase();
 
-        let products = document.querySelectorAll(".product-card");
+        let products =
+            document.querySelectorAll(".product-card");
 
         products.forEach(product => {
 
-            let text = product.textContent.toLowerCase();
+            let text =
+                product.textContent.toLowerCase();
 
-            if (text.includes(filter)) {
-                product.style.display = "";
-            } else {
-                product.style.display = "none";
-            }
+            product.style.display =
+                text.includes(filter) ? "" : "none";
 
         });
+
     });
+
 }
+
 
 // =========================
 // Add To Cart
@@ -46,15 +86,25 @@ if (searchInput) {
 function addToCart(name, price, image) {
 
     let cart =
-        JSON.parse(localStorage.getItem("cart"))
-        || [];
+        JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push({
-        name,
-        price,
-        image,
-        quantity: 1
-    });
+    let existingItem =
+        cart.find(item => item.name === name);
+
+    if (existingItem) {
+
+        existingItem.quantity++;
+
+    } else {
+
+        cart.push({
+            name,
+            price,
+            image,
+            quantity: 1
+        });
+
+    }
 
     localStorage.setItem(
         "cart",
@@ -64,7 +114,9 @@ function addToCart(name, price, image) {
     updateCartCount();
 
     alert("Product Added To Cart!");
+
 }
+
 
 // =========================
 // Load Cart
@@ -72,55 +124,75 @@ function addToCart(name, price, image) {
 
 function loadCart() {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
-    let cartItems = document.getElementById("cartItems");
+    let cartItems =
+        document.getElementById("cartItems");
 
     if (!cartItems) return;
 
-    let total = 0;
-
     cartItems.innerHTML = "";
+
+    let total = 0;
 
     cart.forEach((item, index) => {
 
-        let itemTotal = item.price * item.quantity;
+        let itemTotal =
+            item.price * item.quantity;
 
         total += itemTotal;
 
-        let row = document.createElement("tr");
+        cartItems.innerHTML += `
 
-        row.innerHTML = `
+        <tr>
+
             <td>${item.name}</td>
+
             <td>₹${item.price}</td>
 
             <td>
+
                 <button onclick="decreaseQty(${index})">-</button>
+
                 ${item.quantity}
+
                 <button onclick="increaseQty(${index})">+</button>
+
             </td>
 
             <td>₹${itemTotal}</td>
 
             <td>
-                <button onclick="removeItem(${index})">
-                    Remove
-                </button>
-            </td>
-        `;
 
-        cartItems.appendChild(row);
+                <button onclick="removeItem(${index})">
+
+                    Remove
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
 
     });
 
-    let grandTotal = document.getElementById("grandTotal");
+    let grandTotal =
+        document.getElementById("grandTotal");
 
     if (grandTotal) {
-        grandTotal.innerText = `Grand Total: ₹${total}`;
+
+        grandTotal.innerText =
+            "Grand Total: ₹" + total;
+
     }
 
     updateCartCount();
+
 }
+
 
 // =========================
 // Increase Quantity
@@ -128,14 +200,20 @@ function loadCart() {
 
 function increaseQty(index) {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     cart[index].quantity++;
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
 
     loadCart();
+
 }
+
 
 // =========================
 // Decrease Quantity
@@ -143,16 +221,24 @@ function increaseQty(index) {
 
 function decreaseQty(index) {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     if (cart[index].quantity > 1) {
+
         cart[index].quantity--;
+
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
 
     loadCart();
+
 }
+
 
 // =========================
 // Remove Item
@@ -160,16 +246,22 @@ function decreaseQty(index) {
 
 function removeItem(index) {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.splice(index, 1);
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
 
     loadCart();
 
     updateCartCount();
+
 }
+
 
 // =========================
 // Cart Count
@@ -177,59 +269,34 @@ function removeItem(index) {
 
 function updateCartCount() {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     let totalItems = 0;
 
     cart.forEach(item => {
+
         totalItems += item.quantity;
+
     });
 
-    let cartCount = document.getElementById("cartCount");
+    let cartCount =
+        document.getElementById("cartCount");
 
     if (cartCount) {
+
         cartCount.innerText = totalItems;
+
     }
+
 }
 
-// =========================
-// Auto Run
-// =========================
-
-document.addEventListener("DOMContentLoaded", function () {
-    loadCart();
-    updateCartCount();
-});
 
 // =========================
-// Logout Link Visibility
-// =========================
-
-const logoutLink =
-    document.getElementById("logoutLink");
-
-if (
-    logoutLink &&
-    localStorage.getItem("loggedInUser")
-) {
-    logoutLink.style.display = "block";
-}
-
-// =========================
-// Logout Function
+// Logout
 // =========================
 
 function logout() {
-
-    const loggedInUser =
-        localStorage.getItem("loggedInUser");
-
-    if (!loggedInUser) {
-
-        alert("No user is currently logged in.");
-        return;
-
-    }
 
     localStorage.removeItem("loggedInUser");
 
@@ -238,3 +305,16 @@ function logout() {
     window.location.href = "login.html";
 
 }
+
+
+// =========================
+// Auto Run
+// =========================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    loadCart();
+
+    updateCartCount();
+
+});
