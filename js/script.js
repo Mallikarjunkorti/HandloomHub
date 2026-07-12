@@ -315,6 +315,175 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadCart();
 
+    loadWishlist();
+
     updateCartCount();
 
+    updateWishlistCount();
+
 });
+// =========================
+// Wishlist
+// =========================
+
+function addToWishlist(name, price) {
+
+    let wishlist =
+        JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    let existingItem =
+        wishlist.find(item => item.name === name);
+
+    if (existingItem) {
+
+        alert("Product already in Wishlist ❤️");
+        return;
+
+    }
+
+    wishlist.push({
+        name,
+        price
+    });
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+    updateWishlistCount();
+
+    alert("Added to Wishlist ❤️");
+
+}
+
+// =========================
+// Wishlist Count
+// =========================
+
+function updateWishlistCount() {
+
+    let wishlist =
+        JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const wishlistCount =
+        document.getElementById("wishlistCount");
+
+    if (wishlistCount) {
+
+        wishlistCount.innerText = wishlist.length;
+
+    }
+
+}
+// =========================
+// Load Wishlist
+// =========================
+
+function loadWishlist() {
+
+    const wishlist =
+        JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    const wishlistItems =
+        document.getElementById("wishlistItems");
+
+    if (!wishlistItems) return;
+
+    wishlistItems.innerHTML = "";
+
+    wishlist.forEach((item, index) => {
+
+        wishlistItems.innerHTML += `
+
+        <tr>
+
+            <td>${item.name}</td>
+
+            <td>₹${item.price}</td>
+
+            <td>
+
+                <button onclick="moveToCart(${index})">
+
+                    Move to Cart
+
+                </button>
+
+                <button onclick="removeWishlist(${index})">
+
+                    Remove
+
+                </button>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+// =========================
+// Move Wishlist -> Cart
+// =========================
+
+function moveToCart(index) {
+
+    let wishlist =
+        JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
+
+    const item = wishlist[index];
+
+    cart.push({
+        name: item.name,
+        price: item.price,
+        quantity: 1
+    });
+
+    wishlist.splice(index,1);
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    loadWishlist();
+
+    loadCart();
+
+    updateCartCount();
+
+    updateWishlistCount();
+
+}
+// =========================
+// Remove Wishlist Item
+// =========================
+
+function removeWishlist(index) {
+
+    let wishlist =
+        JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    wishlist.splice(index,1);
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+    loadWishlist();
+
+    updateWishlistCount();
+
+}
