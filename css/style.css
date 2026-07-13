@@ -525,3 +525,172 @@ select{
     border-radius:5px;
 
 }
+/* ==========================
+DIGITAL PASSPORT
+========================== */
+
+.passport{
+
+padding:40px;
+
+background:#f8f8f8;
+
+}
+
+.passport h1{
+
+text-align:center;
+
+margin-bottom:40px;
+
+color:#8B4513;
+
+}
+
+.passport-card{
+
+display:flex;
+
+gap:40px;
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+.left{
+
+width:35%;
+
+text-align:center;
+
+}
+
+.right{
+
+width:65%;
+
+}
+
+.passport-product{
+
+width:100%;
+
+border-radius:10px;
+
+margin-bottom:20px;
+
+}
+
+#qrcode{
+
+margin-top:20px;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.right h2{
+
+margin-top:20px;
+
+color:#8B4513;
+
+}
+
+.right button{
+
+padding:10px 20px;
+
+background:#8B4513;
+
+color:white;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+.right button:hover{
+
+background:#6b3410;
+
+}
+/* ===== Making Journey ===== */
+
+.journey{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:20px;
+}
+
+.journey div{
+    text-align:center;
+}
+
+.journey img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.journey p{
+    margin-top:8px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* ===== Rating ===== */
+
+.rating{
+    text-align:center;
+    background:#fff8dc;
+    padding:20px;
+    border-radius:10px;
+}
+
+.rating h1{
+    color:#f4b400;
+    margin-bottom:10px;
+}
+
+.rating h3{
+    color:#ff9800;
+}
+
+/* ===== Authenticity ===== */
+
+.score{
+    margin-top:20px;
+}
+
+.progress{
+    width:100%;
+    height:20px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.fill{
+    width:100%;
+    height:100%;
+    background:green;
+}
+
+.score h3{
+    color:green;
+}

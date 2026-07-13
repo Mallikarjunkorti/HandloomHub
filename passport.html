@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Passport | HandloomHub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+
+        <h2>🧵 HandloomHub</h2>
+
+        <ul>
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="products.html">Products</a></li>
+
+            <li>
+                <a href="cart.html">
+                    Cart (<span id="cartCount">0</span>)
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html">
+                    ❤️ Wishlist
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+
+<section class="passport">
+
+    <h1>Digital Product Passport</h1>
+
+    <div class="passport-card">
+
+        <!-- LEFT -->
+
+        <div class="left">
+
+            <img
+                id="passportImage"
+                src=""
+                class="passport-product">
+
+            <h2 id="passportProductName"></h2>
+
+            <p id="passportPrice"></p>
+
+            <div id="qrcode"></div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="right">
+
+    <h2>🧵 Artisan Information</h2>
+
+    <p><b>Name :</b> <span id="artisanName"></span></p>
+    <p><b>Experience :</b> <span id="experience"></span></p>
+    <p><b>Village :</b> <span id="village"></span></p>
+    <p><b>District :</b> <span id="district"></span></p>
+    <p><b>State :</b> <span id="state"></span></p>
+
+    <hr>
+
+    <h2>🪡 Weaving Technique</h2>
+
+    <p id="technique"></p>
+
+    <hr>
+
+    <h2>⏱ Time Taken</h2>
+
+    <p id="days"></p>
+
+    <hr>
+
+    <h2>🏆 Authenticity Certificate</h2>
+
+    <p id="certificate"></p>
+
+    <p style="color:green;font-weight:bold;">
+        ✔ Verified Handloom Product
+    </p>
+
+    <hr>
+
+    <h2>🏆 Authenticity Score</h2>
+
+    <div class="score">
+
+        <div class="progress">
+
+            <div class="fill"></div>
+
+        </div>
+
+        <h3>100%</h3>
+
+        <ul>
+
+            <li>✔ Verified Artisan</li>
+
+            <li>✔ GI Certified</li>
+
+            <li>✔ Handmade</li>
+
+            <li>✔ Eco Friendly</li>
+
+        </ul>
+
+    </div>
+
+    <hr>
+
+    <h2>🌱 Sustainability</h2>
+
+    <ul id="environment"></ul>
+
+    <hr>
+
+    <h2>📸 Making Journey</h2>
+
+    <div class="journey">
+
+        <div>
+            <img src="images/passport/thread.jpg">
+            <p>Thread Preparation</p>
+        </div>
+
+        <div>
+            <img src="images/passport/dyeing.jpg">
+            <p>Natural Dyeing</p>
+        </div>
+
+        <div>
+            <img src="images/passport/weaving.jpg">
+            <p>Hand Weaving</p>
+        </div>
+
+        <div>
+            <img src="images/passport/quality.jpg">
+            <p>Quality Inspection</p>
+        </div>
+
+        <div>
+            <img src="images/passport/finished.jpg">
+            <p>Finished Product</p>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <h2>⭐ Customer Rating</h2>
+
+    <div class="rating">
+
+        <h1>★★★★★</h1>
+
+        <h3>4.9 / 5.0</h3>
+
+        <p>Based on 324 Verified Customer Reviews</p>
+
+    </div>
+
+    <br>
+
+    <button onclick="location.href='cart.html'">
+
+        🛒 Buy Now
+
+    </button>
+
+</div>
+
+    </div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="js/script.js"></script>
+
+<script src="js/passport.js"></script>
+
+</body>
+</html>
