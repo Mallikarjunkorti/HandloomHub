@@ -21,16 +21,15 @@ const passports = [
 
     days: "12 Days",
 
-    certificate: "Certificate No: HH20260001",
-
+    certificate: " HH20260001",
+    issueDate: "20 July 2026",
     environment: [
         "Natural Dyes",
         "100% Handmade",
         "Low Carbon Footprint"
     ],
-
-    making1: "images/weaving1.jpg",
-    making2: "images/weaving2.jpg",
+    map:"https://maps.google.com/?q=Mysore,Karnataka",
+    
 
     video: "https://www.youtube.com/watch?v=1oUMYfiCT94&t=43s"
 
@@ -53,16 +52,15 @@ const passports = [
 
     days: "18 Days",
 
-    certificate: "Certificate No: HH20260002",
-
+    certificate: " HH20260002",
+    issueDate: "20 July 2026",
     environment: [
         "Silk Yarn",
         "Hand Woven",
         "Eco Friendly"
     ],
-
-    making1: "images/weaving1.jpg",
-    making2: "images/weaving2.jpg",
+    map:"https://maps.google.com/?q=Varanasi,Uttar Pradesh",
+    
 
     video: "https://www.youtube.com/watch?v=COxJUmf1udI"
 
@@ -85,16 +83,15 @@ const passports = [
 
     days: "5 Days",
 
-    certificate: "Certificate No: HH20260003",
-
+    certificate: " HH20260003",
+    issueDate: "20 July 2026",
     environment: [
         "Organic Cotton",
         "Natural Colours",
         "Low Carbon Footprint"
     ],
-
-    making1: "images/weaving1.jpg",
-    making2: "images/weaving2.jpg",
+    map:"https://maps.google.com/?q=Hubli,Karnataka",
+    
 
     video: "https://www.youtube.com/results?search_query=Cotton+Fabric+weaving"
 
@@ -117,17 +114,15 @@ const passports = [
 
     days: "8 Days",
 
-    certificate: "Certificate No: HH20260004",
-
+    certificate: " HH20260004",
+    issueDate: "20 July 2026",
     environment: [
         "Natural Cotton",
         "Handmade",
         "Eco Friendly"
     ],
-
-    making1: "images/weaving1.jpg",
-    making2: "images/weaving2.jpg",
-
+    map:"https://maps.google.com/?q=Mysuru,Karnataka",
+    
     video: "https://www.youtube.com/results?search_query=Kurti+Material+weaving"
 
 }
@@ -153,8 +148,8 @@ if(passport){
     document.getElementById("passportImage").src =
         passport.image;
 
-    document.getElementById("passportProductName").innerText =
-        passport.product;
+    document.getElementById("certificateProduct").innerText =
+    passport.product;
 
     document.getElementById("passportPrice").innerText =
         "Price : ₹" + passport.price;
@@ -171,8 +166,17 @@ if(passport){
     document.getElementById("district").innerText =
         passport.district;
 
-    document.getElementById("state").innerText =
-        passport.state;
+    document.getElementById("originVillage").innerText =
+    passport.village;
+
+    document.getElementById("originDistrict").innerText =
+    "District : " + passport.district;
+
+    document.getElementById("originState").innerText =
+    "State : " + passport.state;
+
+    document.getElementById("mapLink").href =
+    passport.map;
 
     document.getElementById("technique").innerText =
         passport.technique;
@@ -183,37 +187,47 @@ if(passport){
     document.getElementById("certificate").innerText =
         passport.certificate;
 
-    document.getElementById("makingImage1").src =
-        passport.making1;
+    document.getElementById("issueDate").innerText =
+    passport.issueDate;
+    
+    
+    const env = document.getElementById("environment");
 
-    document.getElementById("makingImage2").src =
-        passport.making2;
+env.innerHTML = "";
 
-    const env =
-        document.getElementById("environment");
+passport.environment.forEach(item => {
 
-    passport.environment.forEach(item=>{
+    env.innerHTML += `
+        <div class="s-card">${item}</div>
+    `;
 
-        env.innerHTML += `<li>${item}</li>`;
+});
+    
 
-    });
+    // ===============================
+// QR Code
+// ===============================
 
-    document
-        .getElementById("videoBtn")
-        .onclick=function(){
+const qrContainer = document.getElementById("qrcode");
 
-        window.open(passport.video);
+if (qrContainer) {
 
-    };
+    qrContainer.innerHTML = "";
 
-    new QRCode(
-        document.getElementById("qrcode"),
-        {
-            text:
-            "https://handloomhub.com/passport?id="+passport.id,
-            width:150,
-            height:150
-        }
-    );
+    if (typeof QRCode !== "undefined") {
+
+        new QRCode(qrContainer, {
+            text: window.location.href,
+            width: 150,
+            height: 150
+        });
+
+    } else {
+
+        console.error("QRCode library not loaded.");
+
+    }
+
+}
 
 }

@@ -626,8 +626,35 @@ cursor:pointer;
 background:#6b3410;
 
 }
-/* ===== Making Journey ===== */
+/* ==========================
+   Sustainability Cards
+========================== */
 
+.sustainability{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:20px;
+}
+
+.s-card{
+    background:#f5f5f5;
+    border-left:5px solid #4CAF50;
+    padding:12px 18px;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.s-card:hover{
+    transform:translateY(-3px);
+    background:#e8f5e9;
+}
+/* ==========================
+   Making Journey
+========================== */
 .journey{
     display:flex;
     flex-wrap:wrap;
@@ -693,4 +720,72 @@ background:#6b3410;
 
 .score h3{
     color:green;
+}
+/* ==========================
+   Authenticity Certificate
+========================== */
+
+.certificate{
+
+    margin-top:20px;
+
+    padding:20px;
+
+    border:3px solid #8B4513;
+
+    border-radius:12px;
+
+    background:#fffdf5;
+
+    box-shadow:0 5px 10px rgba(0,0,0,.15);
+
+}
+
+.certificate h3{
+
+    text-align:center;
+
+    color:#8B4513;
+
+    margin-bottom:15px;
+
+}
+
+.certificate p{
+
+    margin:10px 0;
+
+}
+
+.verified{
+
+    color:green;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}
+/* ==========================
+   Origin Card
+========================== */
+
+.origin-card{
+
+    background:#f9f9f9;
+
+    border-left:5px solid #8B4513;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+}
+
+.origin-card h3{
+
+    color:#8B4513;
+
 }
