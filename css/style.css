@@ -789,3 +789,129 @@ background:#6b3410;
     color:#8B4513;
 
 }
+
+/* ==========================
+   Order Summary
+========================== */
+
+.order-summary{
+
+    width:650px;
+
+    margin:30px auto;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+
+.summary-item{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:center;
+
+}
+
+.summary-item img{
+
+    width:90px;
+
+    border-radius:10px;
+
+}
+
+.summary-item h4{
+
+    margin-bottom:5px;
+
+}
+
+#orderTotal{
+
+    color:#8B4513;
+
+    text-align:right;
+
+    margin-top:20px;
+
+}
+/* ==========================
+   Confirmation Card
+========================== */
+
+.confirmation-card{
+
+    width:500px;
+
+    margin:30px auto;
+
+    padding:25px;
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+    text-align:left;
+
+}
+
+.confirmation-card p{
+
+    margin:15px 0;
+
+}
+
+.confirmation-container button{
+
+    margin:10px;
+
+}
+
+/* ==========================
+  Order
+========================== */
+.orders-container{
+
+    width:900px;
+
+    margin:40px auto;
+
+}
+
+.order-card{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 10px rgba(0,0,0,.15);
+
+}
+
+.order-card button{
+
+    background:#8B4513;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    margin-top:10px;
+
+    cursor:pointer;
+
+}

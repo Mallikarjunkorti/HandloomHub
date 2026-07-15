@@ -163,3 +163,35 @@ document.getElementById("wishlistBtn")
     alert("Added To Wishlist ❤️");
 
 });
+// ===============================
+// Buy Now
+// ===============================
+
+document.getElementById("buyNowBtn")
+.addEventListener("click", function () {
+
+    const qty =
+        Number(document.getElementById("quantity").value);
+
+    const buyNowProduct = {
+
+    id: product.id,
+
+    name: product.name,
+
+    price: product.price,
+
+    image: product.image,
+
+    quantity: qty
+
+    };
+
+    localStorage.setItem(
+        "buyNowProduct",
+        JSON.stringify(buyNowProduct)
+    );
+
+    window.location.href = "checkout.html";
+
+});

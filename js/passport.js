@@ -231,3 +231,26 @@ if (qrContainer) {
 }
 
 }
+// ===============================
+// Buy Now from Passport
+// ===============================
+
+document.getElementById("buyNowBtn").addEventListener("click", function () {
+
+    const buyNowProduct = {
+
+        name: passport.product,
+        price: passport.price,
+        image: passport.image,
+        quantity: 1
+
+    };
+
+    localStorage.setItem(
+        "buyNowProduct",
+        JSON.stringify(buyNowProduct)
+    );
+
+    window.location.href = "checkout.html";
+
+});

@@ -3,24 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmation</title>
+    <title>Order Confirmation | HandloomHub</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<header>
+    <nav>
+        <h2>HandloomHub</h2>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+</header>
 
 <section class="confirmation-container">
 
     <h1>🎉 Order Placed Successfully!</h1>
 
-    <p>Thank you for shopping with HandloomHub.</p>
+    <p>Thank you for shopping with <strong>HandloomHub</strong>.</p>
 
-    <h3>Order ID: HH2026001</h3>
+    <div class="confirmation-card">
 
-    <a href="index.html">
-        <button>Continue Shopping</button>
+        <h2>📦 Order Details</h2>
+
+        <p>
+            <strong>Order ID:</strong>
+            <span id="orderId"></span>
+        </p>
+
+        <p>
+            <strong>Order Date:</strong>
+            <span id="orderDate"></span>
+        </p>
+
+        <p>
+            <strong>Payment:</strong>
+            <span id="paymentMethod"></span>
+        </p>
+
+        <p>
+            <strong>Total Amount:</strong>
+            <span id="orderTotal"></span>
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            <span style="color:orange;font-weight:bold;">
+                Processing
+            </span>
+        </p>
+
+        <p>
+            <strong>Estimated Delivery:</strong>
+            <span id="deliveryDate"></span>
+        </p>
+
+    </div>
+
+    <br>
+
+    <a href="products.html">
+        <button>🛍 Continue Shopping</button>
+    </a>
+
+    <a href="orders.html">
+        <button>📦 My Orders</button>
     </a>
 
 </section>
+
+<script>
+
+const order = JSON.parse(
+    localStorage.getItem("lastOrder")
+);
+
+if(order){
+
+    document.getElementById("orderId").innerText =
+        order.orderId;
+
+    document.getElementById("orderDate").innerText =
+        order.orderDate;
+
+    document.getElementById("paymentMethod").innerText =
+        order.paymentMethod;
+
+    document.getElementById("orderTotal").innerText =
+        "₹" + order.totalAmount;
+
+    document.getElementById("deliveryDate").innerText =
+        order.deliveryDate;
+
+}
+
+</script>
 
 </body>
 </html>
