@@ -93,33 +93,35 @@ document.getElementById("addToCartBtn")
         JSON.parse(localStorage.getItem("cart")) || [];
 
     let existing =
-        cart.find(item=>item.name===product.name);
+    cart.find(item => item.id === product.id);
 
-    if(existing){
+if(existing){
 
-        existing.quantity += qty;
+    existing.quantity += qty;
 
-    }else{
+}else{
 
-        cart.push({
+    cart.push({
 
-            name:product.name,
+        id: product.id,
 
-            price:product.price,
+        name: product.name,
 
-            image:product.image,
+        price: product.price,
 
-            quantity:qty
+        image: product.image,
 
-        });
+        quantity: qty
 
-    }
+    });
+
+}
 
     localStorage.setItem(
         "cart",
         JSON.stringify(cart)
     );
-
+    updateCartCount();
     alert("Added To Cart");
 
 });
@@ -135,31 +137,33 @@ document.getElementById("wishlistBtn")
         JSON.parse(localStorage.getItem("wishlist")) || [];
 
     let exists =
-        wishlist.find(item=>item.name===product.name);
+    wishlist.find(item => item.id === product.id);
 
-    if(exists){
+if(exists){
 
-        alert("Already in Wishlist ❤️");
+    alert("Already in Wishlist ❤️");
 
-        return;
+    return;
 
-    }
+}
 
-    wishlist.push({
+wishlist.push({
 
-        name:product.name,
+    id: product.id,
 
-        price:product.price,
+    name: product.name,
 
-        image:product.image
+    price: product.price,
 
-    });
+    image: product.image
+
+});
 
     localStorage.setItem(
         "wishlist",
         JSON.stringify(wishlist)
     );
-
+    updateWishlistCount();
     alert("Added To Wishlist ❤️");
 
 });
