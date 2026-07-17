@@ -4,11 +4,10 @@
 
 console.log("orders.js loaded");
 
-const ordersContainer =
-    document.getElementById("ordersContainer");
+const ordersContainer = document.getElementById("ordersContainer");
 
 const orders =
-    JSON.parse(localStorage.getItem("orders")) || [];
+    JSON.parse(localStorage.getItem(getOrdersKey())) || [];
 
 if (orders.length === 0) {
 
@@ -21,11 +20,7 @@ if (orders.length === 0) {
             <br>
 
             <a href="products.html">
-
-                <button>
-                    🛍 Start Shopping
-                </button>
-
+                <button>🛍 Start Shopping</button>
             </a>
 
         </div>
@@ -36,82 +31,101 @@ if (orders.length === 0) {
 
     orders.forEach((order) => {
 
-        const product =
-            order.products?.[0] || {};
+        let productsHTML = "";
 
-        ordersContainer.innerHTML += `
+        order.products.forEach((product) => {
 
-        <div class="order-card">
+            productsHTML += `
 
             <div class="order-top">
 
                 <img
-                    src="${product.image || 'images/mysore-silk.jpg'}"
+                    src="${product.image}"
                     width="120"
                     height="120"
                     style="border-radius:10px;object-fit:cover;">
 
                 <div>
 
-                    <h2>
-                        ${product.name || "Handloom Product"}
-                    </h2>
+                    <h2>${product.name}</h2>
 
                     <p>
-                        <strong>Order ID:</strong>
-                        ${order.orderId}
+                        <strong>Quantity:</strong>
+                        ${product.quantity}
                     </p>
 
                     <p>
-                        <strong>Order Date:</strong>
-                        ${order.orderDate}
+                        <strong>Price:</strong>
+                        ₹${product.price}
                     </p>
 
-                    <p>
-                        <strong>Payment:</strong>
-                        ${order.paymentMethod}
-                    </p>
+                    <button
+                        onclick="window.location.href='passport.html?id=${product.id}'">
 
-                    <p>
-                        <strong>Total:</strong>
-                        ₹${order.totalAmount}
-                    </p>
+                        🧵 View Passport
 
-                    <p>
-                        <strong>Status:</strong>
+                    </button>
 
-                        <span style="color:orange;font-weight:bold;">
+                    <button
+                        onclick='buyAgain(${JSON.stringify(product).replace(/"/g,"&quot;")})'>
 
-                            ${order.status}
+                        🔄 Buy Again
 
-                        </span>
-
-                    </p>
+                    </button>
 
                 </div>
 
             </div>
 
+            <hr>
+
+            `;
+
+        });
+
+        ordersContainer.innerHTML += `
+
+        <div class="order-card">
+
+            <h3>📦 Order Details</h3>
+
+            <p>
+                <strong>Order ID:</strong>
+                ${order.orderId}
+            </p>
+
+            <p>
+                <strong>Order Date:</strong>
+                ${order.orderDate}
+            </p>
+
+            <p>
+                <strong>Payment:</strong>
+                ${order.paymentMethod}
+            </p>
+
+            <p>
+                <strong>Total:</strong>
+                ₹${order.totalAmount}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+
+                <span style="color:orange;font-weight:bold;">
+                    ${order.status}
+                </span>
+
+            </p>
+
             <br>
 
-            <button
-                onclick="window.location.href='passport.html?id=${product.id}'">
-
-                🧵 View Passport
-
-            </button>
+            ${productsHTML}
 
             <button
                 onclick="trackOrder('${order.orderId}')">
 
                 🚚 Track Order
-
-            </button>
-
-            <button
-                onclick="buyAgain(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-
-                🔄 Buy Again
 
             </button>
 
@@ -152,7 +166,7 @@ function buyAgain(product){
 
     localStorage.setItem(
 
-        "buyNowProduct",
+        getBuyNowKey(),
 
         JSON.stringify({
 

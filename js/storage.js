@@ -8,6 +8,10 @@ function getLoggedInUser() {
 
 }
 
+// ===============================
+// Cart
+// ===============================
+
 function getCartKey() {
 
     const user = getLoggedInUser();
@@ -17,6 +21,10 @@ function getCartKey() {
         : "cart_guest";
 
 }
+
+// ===============================
+// Wishlist
+// ===============================
 
 function getWishlistKey() {
 
@@ -28,6 +36,10 @@ function getWishlistKey() {
 
 }
 
+// ===============================
+// Orders
+// ===============================
+
 function getOrdersKey() {
 
     const user = getLoggedInUser();
@@ -35,5 +47,19 @@ function getOrdersKey() {
     return user
         ? `orders_${user.email}`
         : "orders_guest";
+
+}
+
+// ===============================
+// Buy Now
+// ===============================
+
+function getBuyNowKey() {
+
+    const user = getLoggedInUser();
+
+    return user
+        ? `buyNow_${user.email}`
+        : "buyNow_guest";
 
 }

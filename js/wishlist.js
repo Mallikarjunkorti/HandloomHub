@@ -1,5 +1,5 @@
 // =========================
-// Wishlist
+// Add To Wishlist
 // =========================
 
 function addToWishlist(id, name, price, image) {
@@ -19,16 +19,22 @@ function addToWishlist(id, name, price, image) {
 
     wishlist.push({
 
-        id,
-        name,
-        price,
-        image
+        id: id,
+
+        name: name,
+
+        price: price,
+
+        image: image
 
     });
 
     localStorage.setItem(
-    getWishlistKey(),
+
+        getWishlistKey(),
+
         JSON.stringify(wishlist)
+
     );
 
     updateWishlistCount();
@@ -36,6 +42,7 @@ function addToWishlist(id, name, price, image) {
     alert("Added to Wishlist ❤️");
 
 }
+
 
 // =========================
 // Wishlist Count
@@ -45,7 +52,8 @@ function updateWishlistCount() {
 
     let wishlist =
         JSON.parse(localStorage.getItem(getWishlistKey())) || [];
-    const wishlistCount =
+
+    let wishlistCount =
         document.getElementById("wishlistCount");
 
     if (wishlistCount) {
@@ -55,16 +63,18 @@ function updateWishlistCount() {
     }
 
 }
+
+
 // =========================
 // Load Wishlist
 // =========================
 
 function loadWishlist() {
 
-    const wishlist =
+    let wishlist =
         JSON.parse(localStorage.getItem(getWishlistKey())) || [];
 
-    const wishlistItems =
+    let wishlistItems =
         document.getElementById("wishlistItems");
 
     if (!wishlistItems) return;
@@ -104,8 +114,10 @@ function loadWishlist() {
     });
 
 }
+
+
 // =========================
-// Move Wishlist -> Cart
+// Move Wishlist To Cart
 // =========================
 
 function moveToCart(index) {
@@ -143,16 +155,22 @@ function moveToCart(index) {
 
     }
 
-    wishlist.splice(index,1);
+    wishlist.splice(index, 1);
 
     localStorage.setItem(
-    getWishlistKey(),
+
+        getWishlistKey(),
+
         JSON.stringify(wishlist)
+
     );
 
     localStorage.setItem(
-    getCartKey(),
+
+        getCartKey(),
+
         JSON.stringify(cart)
+
     );
 
     loadWishlist();
@@ -163,7 +181,12 @@ function moveToCart(index) {
 
     updateWishlistCount();
 
-}// =========================
+    alert("Moved to Cart 🛒");
+
+}
+
+
+// =========================
 // Remove Wishlist Item
 // =========================
 
@@ -171,15 +194,21 @@ function removeWishlist(index) {
 
     let wishlist =
         JSON.parse(localStorage.getItem(getWishlistKey())) || [];
-    wishlist.splice(index,1);
+
+    wishlist.splice(index, 1);
 
     localStorage.setItem(
-    getWishlistKey(),
+
+        getWishlistKey(),
+
         JSON.stringify(wishlist)
+
     );
 
     loadWishlist();
 
     updateWishlistCount();
+
+    alert("Removed from Wishlist");
 
 }

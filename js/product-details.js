@@ -60,7 +60,7 @@ const product = products.find(p => p.id === productId);
 // Load Product
 // ===============================
 
-if(product){
+if (product) {
 
     document.getElementById("productImage").src =
         product.image;
@@ -84,45 +84,24 @@ if(product){
 // ===============================
 
 document.getElementById("addToCartBtn")
-.addEventListener("click",function(){
+.addEventListener("click", function () {
 
     const qty =
         Number(document.getElementById("quantity").value);
 
-    let cart =
-        JSON.parse(localStorage.getItem("cart")) || [];
+    addToCart(
 
-    let existing =
-    cart.find(item => item.id === product.id);
+        product.id,
 
-if(existing){
+        product.name,
 
-    existing.quantity += qty;
+        product.price,
 
-}else{
+        product.image,
 
-    cart.push({
+        qty
 
-        id: product.id,
-
-        name: product.name,
-
-        price: product.price,
-
-        image: product.image,
-
-        quantity: qty
-
-    });
-
-}
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
     );
-    updateCartCount();
-    alert("Added To Cart");
 
 });
 
@@ -131,42 +110,22 @@ if(existing){
 // ===============================
 
 document.getElementById("wishlistBtn")
-.addEventListener("click",function(){
+.addEventListener("click", function () {
 
-    let wishlist =
-        JSON.parse(localStorage.getItem("wishlist")) || [];
+    addToWishlist(
 
-    let exists =
-    wishlist.find(item => item.id === product.id);
+        product.id,
 
-if(exists){
+        product.name,
 
-    alert("Already in Wishlist ❤️");
+        product.price,
 
-    return;
+        product.image
 
-}
-
-wishlist.push({
-
-    id: product.id,
-
-    name: product.name,
-
-    price: product.price,
-
-    image: product.image
-
-});
-
-    localStorage.setItem(
-        "wishlist",
-        JSON.stringify(wishlist)
     );
-    updateWishlistCount();
-    alert("Added To Wishlist ❤️");
 
 });
+
 // ===============================
 // Buy Now
 // ===============================
@@ -179,21 +138,21 @@ document.getElementById("buyNowBtn")
 
     const buyNowProduct = {
 
-    id: product.id,
+        id: product.id,
 
-    name: product.name,
+        name: product.name,
 
-    price: product.price,
+        price: product.price,
 
-    image: product.image,
+        image: product.image,
 
-    quantity: qty
+        quantity: qty
 
     };
 
     localStorage.setItem(
-        "buyNowProduct",
-        JSON.stringify(buyNowProduct)
+    getBuyNowKey(),
+    JSON.stringify(buyNowProduct)
     );
 
     window.location.href = "checkout.html";

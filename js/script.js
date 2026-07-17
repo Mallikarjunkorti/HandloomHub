@@ -103,12 +103,20 @@ function logout() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    loadCart();
+    if (typeof loadCart === "function") {
+        loadCart();
+    }
 
-    loadWishlist();
+    if (typeof loadWishlist === "function") {
+        loadWishlist();
+    }
 
-    updateCartCount();
+    if (typeof updateCartCount === "function") {
+        updateCartCount();
+    }
 
-    updateWishlistCount();
+    if (typeof updateWishlistCount === "function") {
+        updateWishlistCount();
+    }
 
 });

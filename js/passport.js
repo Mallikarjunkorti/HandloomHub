@@ -171,6 +171,9 @@ if(passport){
 
     document.getElementById("originDistrict").innerText =
     "District : " + passport.district;
+    
+    document.getElementById("state").innerText =
+        passport.state;
 
     document.getElementById("originState").innerText =
     "State : " + passport.state;
@@ -247,8 +250,8 @@ document.getElementById("buyNowBtn").addEventListener("click", function () {
     };
 
     localStorage.setItem(
-        "buyNowProduct",
-        JSON.stringify(buyNowProduct)
+    getBuyNowKey(),
+    JSON.stringify(buyNowProduct)
     );
 
     window.location.href = "checkout.html";

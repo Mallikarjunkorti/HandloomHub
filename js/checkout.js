@@ -3,11 +3,10 @@
 // ===============================
 
 const buyNowProduct =
-    JSON.parse(localStorage.getItem("buyNowProduct"));
+    JSON.parse(localStorage.getItem(getBuyNowKey()));
 
 const cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
-
+    JSON.parse(localStorage.getItem(getCartKey())) || [];
 const products =
     buyNowProduct ? [buyNowProduct] : cart;
 
@@ -75,9 +74,7 @@ document.getElementById("checkoutForm")
 
     e.preventDefault();
 
-    const user =
-        JSON.parse(localStorage.getItem("loggedInUser"));
-
+    const user = getLoggedInUser();
     if (!user) {
 
         alert("Please Login First");
@@ -171,20 +168,19 @@ document.getElementById("checkoutForm")
 
             };
 
-            localStorage.setItem(
-                "lastOrder",
+           localStorage.setItem(
+                "lastOrder_" + user.email,
                 JSON.stringify(order)
             );
 
             // Save Order History
 
             let orders =
-                JSON.parse(localStorage.getItem("orders")) || [];
-
+                JSON.parse(localStorage.getItem(getOrdersKey())) || [];
             orders.push(order);
 
             localStorage.setItem(
-                "orders",
+                getOrdersKey(),
                 JSON.stringify(orders)
             );
 
@@ -192,12 +188,11 @@ document.getElementById("checkoutForm")
 
             if (buyNowProduct) {
 
-                localStorage.removeItem("buyNowProduct");
+                localStorage.removeItem(getBuyNowKey());
 
             } else {
 
-                localStorage.removeItem("cart");
-
+                localStorage.removeItem(getCartKey());
             }
 
             alert("Order Placed Successfully!");

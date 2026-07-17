@@ -2,7 +2,7 @@
 // Add To Cart
 // =========================
 
-function addToCart(id, name, price, image) {
+function addToCart(id, name, price, image, quantity = 1) {
 
     let cart =
         JSON.parse(localStorage.getItem(getCartKey())) || [];
@@ -10,29 +10,30 @@ function addToCart(id, name, price, image) {
     let existingItem =
         cart.find(item => item.id === id);
 
-    if(existingItem){
+    if (existingItem) {
 
-        existingItem.quantity++;
+        existingItem.quantity += quantity;
 
-    }else{
+    } else {
 
         cart.push({
 
-            id,
+            id: id,
 
-            name,
+            name: name,
 
-            price,
+            price: price,
 
-            image,
+            image: image,
 
-            quantity:1
+            quantity: quantity
 
         });
 
     }
 
-    localStorage.setItem(getCartKey(),
+    localStorage.setItem(
+        getCartKey(),
         JSON.stringify(cart)
     );
 
@@ -212,5 +213,13 @@ function updateCartCount() {
         cartCount.innerText = totalItems;
 
     }
+
+}
+//Go to cart
+function goToCheckout() {
+
+    localStorage.removeItem(getBuyNowKey());
+
+    window.location.href = "checkout.html";
 
 }

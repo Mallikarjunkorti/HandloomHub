@@ -10,13 +10,29 @@
 
 <header>
     <nav>
+
         <h2>HandloomHub</h2>
 
         <ul>
+
             <li><a href="index.html">Home</a></li>
+
             <li><a href="products.html">Products</a></li>
-            <li><a href="cart.html">Cart</a></li>
+
+            <li>
+                <a href="cart.html">
+                    Cart (<span id="cartCount">0</span>)
+                </a>
+            </li>
+
+            <li>
+                <a href="wishlist.html">
+                    ❤️ Wishlist (<span id="wishlistCount">0</span>)
+                </a>
+            </li>
+
         </ul>
+
     </nav>
 </header>
 
@@ -24,7 +40,10 @@
 
     <h1>🎉 Order Placed Successfully!</h1>
 
-    <p>Thank you for shopping with <strong>HandloomHub</strong>.</p>
+    <p>
+        Thank you for shopping with
+        <strong>HandloomHub</strong>.
+    </p>
 
     <div class="confirmation-card">
 
@@ -47,14 +66,12 @@
 
         <p>
             <strong>Total Amount:</strong>
-            <span id="orderTotal"></span>
+            <span id="totalAmount"></span>
         </p>
 
         <p>
             <strong>Status:</strong>
-            <span style="color:orange;font-weight:bold;">
-                Processing
-            </span>
+            <span id="status" style="color:orange;font-weight:bold;"></span>
         </p>
 
         <p>
@@ -76,32 +93,11 @@
 
 </section>
 
-<script>
-
-const order = JSON.parse(
-    localStorage.getItem("lastOrder")
-);
-
-if(order){
-
-    document.getElementById("orderId").innerText =
-        order.orderId;
-
-    document.getElementById("orderDate").innerText =
-        order.orderDate;
-
-    document.getElementById("paymentMethod").innerText =
-        order.paymentMethod;
-
-    document.getElementById("orderTotal").innerText =
-        "₹" + order.totalAmount;
-
-    document.getElementById("deliveryDate").innerText =
-        order.deliveryDate;
-
-}
-
-</script>
+<script src="js/storage.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script src="js/script.js"></script>
+<script src="js/confirmation.js"></script>
 
 </body>
 </html>
