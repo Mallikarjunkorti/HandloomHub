@@ -241,7 +241,7 @@ if (qrContainer) {
 document.getElementById("buyNowBtn").addEventListener("click", function () {
 
     const buyNowProduct = {
-
+        id: passport.id,
         name: passport.product,
         price: passport.price,
         image: passport.image,
