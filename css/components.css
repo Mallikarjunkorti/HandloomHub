@@ -1,0 +1,233 @@
+/* ==========================================
+   REUSABLE COMPONENTS
+========================================== */
+
+/* Container */
+
+.container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:0 20px;
+
+}
+
+/* Section */
+
+.section{
+
+    padding:80px 0;
+
+}
+
+/* Section Heading */
+
+.section-title{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    color:var(--primary);
+
+    margin-bottom:15px;
+
+}
+
+.section-subtitle{
+
+    max-width:700px;
+
+    margin:auto;
+
+    text-align:center;
+
+    color:var(--text-light);
+
+    margin-bottom:60px;
+
+}
+
+/* Cards */
+
+.card{
+
+    background:white;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/* Buttons */
+
+.btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:18px 38px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:all .3s ease;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.btn-primary:hover{
+
+    background:#64391e;
+
+}
+
+.btn-secondary{
+
+    background:var(--accent);
+
+    color:white;
+
+}
+
+.btn-secondary:hover{
+
+    background:#23523c;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+
+}
+
+/* Badge */
+
+.badge{
+
+    display:inline-block;
+
+    background:var(--accent);
+
+    color:white;
+
+    padding:6px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+}
+
+/* Product Price */
+
+.price{
+
+    color:var(--primary);
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+/* Rating */
+
+.rating{
+
+    color:#F4B400;
+
+    font-size:18px;
+
+}
+
+/* Grid */
+
+.grid{
+
+    display:grid;
+
+    gap:30px;
+
+}
+
+.grid-2{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.grid-3{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.grid-4{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+@media(max-width:992px){
+
+.grid-4{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.grid-3{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.grid-2{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.grid-4,
+
+.grid-3{
+
+grid-template-columns:1fr;
+
+}
+
+}

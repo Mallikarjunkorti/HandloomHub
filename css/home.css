@@ -1,0 +1,199 @@
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero{
+
+    background:#F5E8D6;
+
+    padding:80px 0;
+
+}
+
+.hero .container{
+
+    width:min(1200px,90%);
+
+    margin:auto;
+
+}
+
+.hero-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+
+.hero-content{
+
+    max-width:560px;
+
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    padding:12px 24px;
+
+    border-radius:999px;
+
+    background:#EBCFB4;
+
+    color:#8B5E34;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-bottom:28px;
+
+}
+
+.hero h1{
+
+    font-size:64px;
+
+    font-weight:700;
+
+    line-height:1.15;
+
+    color:#8B5E34;
+
+    margin-bottom:28px;
+
+}
+
+.hero p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    color:#4F4F4F;
+
+    margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-image{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:650px;
+
+    height:520px;
+
+    object-fit:cover;
+
+    border-radius:28px;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.18);
+
+    transition:transform .4s ease;
+
+}
+
+.hero-image img:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width:992px){
+
+    .hero-wrapper{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .hero-content{
+
+        max-width:100%;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+    .hero-image{
+
+        justify-content:center;
+
+        margin-top:40px;
+
+    }
+
+    .hero-image img{
+
+        height:auto;
+
+        max-width:550px;
+
+    }
+
+}
+
+@media (max-width:576px){
+
+    .hero{
+
+        padding:60px 0;
+
+    }
+
+    .hero h1{
+
+        font-size:42px;
+
+    }
+
+    .hero p{
+
+        font-size:17px;
+
+    }
+
+    .hero-badge{
+
+        font-size:14px;
+
+    }
+
+}
