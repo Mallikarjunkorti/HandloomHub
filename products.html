@@ -57,121 +57,13 @@
     </nav>
 </header>
 
-<section class="product-page">
+<section class="products-page">
 
-    <h1>Our Products</h1>
+    <div class="container">
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search Products..."
-    >
+        <h2>All Products</h2>
 
-    <div class="product-grid">
-
-        <!-- Mysore Silk -->
-
-        <div class="product-card">
-
-            <img src="images/mysore-silk.jpg">
-
-            <h3>Mysore Silk Saree</h3>
-
-            <p>₹4999</p>
-
-            <button onclick="addToCart(1,'Mysore Silk Saree',4999,'images/mysore-silk.jpg')">
-                Add to Cart
-            </button>
-
-            <button onclick="addToWishlist(1,'Mysore Silk Saree',4999,'images/mysore-silk.jpg')">
-                ❤️ Wishlist
-            </button>
-
-            <br><br>
-
-            <a href="product-details.html?id=1">
-                View Details
-            </a>
-
-        </div>
-
-        <!-- Banarasi -->
-
-        <div class="product-card">
-
-            <img src="images/banarasi.jpg">
-
-            <h3>Banarasi Saree</h3>
-
-            <p>₹6499</p>
-
-            <button onclick="addToCart(2,'Banarasi Saree',6499,'images/banarasi.jpg')">
-                Add to Cart
-            </button>
-
-            <button onclick="addToWishlist(2,'Banarasi Saree',6499,'images/banarasi.jpg')">
-                ❤️ Wishlist
-            </button>
-
-            <br><br>
-
-            <a href="product-details.html?id=2">
-                View Details
-            </a>
-
-        </div>
-
-        <!-- Cotton -->
-
-        <div class="product-card">
-
-            <img src="images/cotton-fabric.jpg">
-
-            <h3>Cotton Fabric</h3>
-
-            <p>₹899</p>
-
-            <button onclick="addToCart(3,'Cotton Fabric',899,'images/cotton-fabric.jpg')">
-                Add to Cart
-            </button>
-
-            <button onclick="addToWishlist(3,'Cotton Fabric',899,'images/cotton-fabric.jpg')">
-                ❤️ Wishlist
-            </button>
-
-            <br><br>
-
-            <a href="product-details.html?id=3">
-                View Details
-            </a>
-
-        </div>
-
-        <!-- Kurti -->
-
-        <div class="product-card">
-
-            <img src="images/kurti.jpg">
-
-            <h3>Kurti Material</h3>
-
-            <p>₹1299</p>
-
-            <button onclick="addToCart(4,'Kurti Material',1299,'images/kurti.jpg')">
-                Add to Cart
-            </button>
-
-            <button onclick="addToWishlist(4,'Kurti Material',1299,'images/kurti.jpg')">
-                ❤️ Wishlist
-            </button>
-
-            <br><br>
-
-            <a href="product-details.html?id=4">
-                View Details
-            </a>
-
-        </div>
+        <div id="productsGrid" class="products-grid"></div>
 
     </div>
 
@@ -180,6 +72,12 @@
 <script src="js/storage.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/wishlist.js"></script>
+
+<script src="js/data/products.js"></script>
+<script src="js/components/product-card.js"></script>
+<script src="js/pages/products-page.js"></script>
+
 <script src="js/script.js"></script>
+
 </body>
 </html>

@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- CSS Files -->
-<link rel="stylesheet" href="css/theme.css">
+ <link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/home.css">
@@ -52,7 +52,7 @@
 
             Wishlist
 
-            <span id="wishlistCount">0</span>
+            <span id="wishlistCount"></span>
 
         </a>
     </li>
@@ -62,7 +62,7 @@
 
             Cart
 
-            <span id="cartCount">0</span>
+            <span id="cartCount"></span>
 
         </a>
     </li>
@@ -88,65 +88,70 @@
 
     
 
-<!-- ==========================================
- HERO SECTION
-========================================== -->
-
 <section class="hero">
+
+    <!-- Background Image -->
+
+    <img
+        src="images/hero/hero-banner.jpg"
+        class="hero-bg"
+        alt="Indian Handloom Artisan">
+
+    <!-- Gradient Overlay -->
+
+    <div class="hero-overlay"></div>
 
     <div class="container">
 
-        <div class="hero-wrapper">
+        <div class="hero-content">
 
-            <!-- Left Content -->
-            <div class="hero-content">
+            <span class="hero-badge">
 
-                <span class="hero-badge">
+                🌿 India's Trusted Handloom Marketplace
 
-                    🌿 India's Trusted Handloom Marketplace
+            </span>
 
-                </span>
+            <h1>
 
-                <h1>
+                Crafted by Tradition.
 
-                    Crafted by Tradition.<br>
+                <br>
 
-                    Connected by Technology.
+                Connected by Technology.
 
-                </h1>
+            </h1>
 
-                <p>
+            <div class="hero-divider">
 
-                    Discover authentic handloom products handcrafted by skilled Indian artisans.
-                    Every purchase supports traditional weaving communities and includes a
-                    Digital Product Passport for complete transparency.
+                <span></span>
 
-                </p>
+                ✤
 
-                <div class="hero-buttons">
-
-                    <a href="products.html" class="btn btn-primary">
-
-                        Shop Collection
-
-                    </a>
-
-                    <a href="passport.html?id=1" class="btn btn-secondary">
-
-                        Explore Passport
-
-                    </a>
-
-                </div>
+                <span></span>
 
             </div>
 
-            <!-- Right Image -->
-            <div class="hero-image">
+            <p>
 
-                <img
-                    src="images/hero/hero-banner.jpg"
-                    alt="Handloom Artisan">
+                Discover authentic handloom products handcrafted by skilled Indian artisans.
+                Every purchase supports traditional weaving communities and comes with a
+                Digital Product Passport for complete transparency.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="products.html" class="btn btn-primary">
+
+                    🛍 Shop Collection
+
+                </a>
+
+                <a href="passport.html?id=1" class="btn btn-outline">
+
+                    🛡 Explore Passport
+
+                </a>
 
             </div>
 
@@ -156,37 +161,172 @@
 
 </section>
 
-    <section class="products">
-        <h2>Featured Products</h2>
+<!-- ==========================================
+     STATISTICS
+========================================== -->
 
-        <div class="product-container">
+<section class="stats">
 
-            <div class="card">
-                <img src="images/mysore-silk.jpg" alt="">
-                <h3>Mysore Silk Saree</h3>
-                <p>₹4999</p>
+    <div class="container">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">👨‍🎨</div>
+
+                <h2>150+</h2>
+
+                <p>Verified Artisans</p>
+
             </div>
 
-            <div class="card">
-                <img src="images/banarasi.jpg" alt="">
-                <h3>Banarasi Saree</h3>
-                <p>₹6499</p>
+            <div class="stat-card">
+
+                <div class="stat-icon">🛍️</div>
+
+                <h2>500+</h2>
+
+                <p>Premium Products</p>
+
             </div>
 
-            <div class="card">
-                <img src="images/dupatta.jpg" alt="">
-                <h3>Handloom Dupatta</h3>
-                <p>₹699</p>
+            <div class="stat-card">
+
+                <div class="stat-icon">🛡️</div>
+
+                <h2>100%</h2>
+
+                <p>Authentic Products</p>
+
             </div>
-            <div class="card">
-                <img src="images/kurti.jpg" alt="">
-                <h3>Handloom Kurti</h3>
-                <p>₹1299</p>
+
+            <div class="stat-card">
+
+                <div class="stat-icon">🇮🇳</div>
+
+                <h2>24</h2>
+
+                <p>States Connected</p>
+
             </div>
 
         </div>
-    </section>
 
+    </div>
+
+</section>
+
+<!-- ==========================================
+     CATEGORIES
+========================================== -->
+
+<section class="categories">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>Shop by Category</span>
+
+            <h2>Discover India's Finest Handloom Collection</h2>
+
+            <p>
+
+                Explore authentic handcrafted products made by skilled artisans
+                across different regions of India.
+
+            </p>
+
+        </div>
+
+        <div class="category-grid">
+
+            <a href="products.html?category=Sarees" class="category-card">
+
+                <img src="images/categories/saree.jpg" alt="Sarees">
+
+                <div class="category-overlay">
+
+                    <h3>🥻 Sarees</h3>
+
+                </div>
+
+            </a>
+
+            <a href="products.html?category=Fabric" class="category-card">
+
+                <img src="images/categories/fabric.jpg" alt="Fabric">
+
+                <div class="category-overlay">
+
+                    <h3>🧵 Fabrics</h3>
+
+                </div>
+
+            </a>
+
+            <a href="products.html?category=Kurti" class="category-card">
+
+                <img src="images/categories/kurti.jpg" alt="Kurti">
+
+                <div class="category-overlay">
+
+                    <h3>👗 Kurtis</h3>
+
+                </div>
+
+            </a>
+
+            <a href="products.html?category=Dupatta" class="category-card">
+
+                <img src="images/categories/dupatta.jpg" alt="Dupatta">
+
+                <div class="category-overlay">
+
+                    <h3>🧣 Dupattas</h3>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+   <!-- ==========================================
+     FEATURED PRODUCTS
+========================================== -->
+
+<section class="featured-products">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>Featured Collection</span>
+
+            <h2>Our Best Selling Products</h2>
+
+            <p>
+
+                Handpicked handcrafted products loved by thousands of customers.
+
+            </p>
+
+        </div>
+
+        <div
+            id="featuredProducts"
+            class="products-grid">
+
+        </div>
+
+    </div>
+
+</section>
     <footer>
         <p>© 2026 HandloomHub</p>
     </footer>
@@ -232,5 +372,8 @@ function logout() {
     window.location.href = "login.html";
 }
 </script>
+<script src="js/data/products.js"></script>
+<script src="js/components/product-card.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
