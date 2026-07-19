@@ -44,12 +44,27 @@ function createProductCard(product) {
 
                     <button
                         class="cart-btn"
-                        data-id="${product.id}">
+                        data-id="${product.id}"
+                        onClick=>
                         Add to Cart
                     </button>
 
                 </div>
+                <button
+    class="buy-btn"
+    data-id="${product.id}">
 
+    Buy Now
+
+</button>
+
+<a
+    href="product-details.html?id=${product.id}"
+    class="details-btn">
+
+    View Details →
+
+</a>
             </div>
 
         </div>
