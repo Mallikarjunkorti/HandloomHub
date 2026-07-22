@@ -83,13 +83,13 @@ document.querySelector("form")
                 JSON.stringify(data.user)
             );
 
-            showToast("Login Successful!");
+            alert("Login Successful!");
 
             window.location.href = "index.html";
 
         } else {
 
-            showToast(data.message);
+            alert(data.message);
         }
 
     } catch (error) {
@@ -102,5 +102,6 @@ document.querySelector("form")
 </script>
 <script src="js/components/toast.js"></script>
 <script src="js/events/product-events.js"></script>
+<script src="js/components/navbar.js"></script>
 </body>
 </html>

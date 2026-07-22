@@ -1,55 +1,6 @@
 console.log("script.js loaded");
 
 // =========================
-// Logged In User
-// =========================
-
-const user = JSON.parse(localStorage.getItem("loggedInUser"));
-
-
-// =========================
-// Navbar Links
-// =========================
-
-const loginLink = document.getElementById("loginLink");
-const logoutLink = document.getElementById("logoutLink");
-const adminLink = document.getElementById("adminLink");
-
-// Hide Admin by default
-if (adminLink) {
-    adminLink.style.display = "none";
-}
-
-if (user) {
-
-    if (loginLink)
-        loginLink.style.display = "none";
-
-    if (logoutLink)
-        logoutLink.style.display = "block";
-
-    // Show Admin only for Admin account
-    if (
-        adminLink &&
-        user.email === "mallikarjunkorti40@gmail.com"
-    ) {
-        adminLink.style.display = "block";
-    }
-
-} else {
-
-    if (loginLink)
-        loginLink.style.display = "block";
-
-    if (logoutLink)
-        logoutLink.style.display = "none";
-
-    if (adminLink)
-        adminLink.style.display = "none";
-}
-
-
-// =========================
 // Product Search
 // =========================
 
@@ -59,17 +10,17 @@ if (searchInput) {
 
     searchInput.addEventListener("keyup", function () {
 
-        let filter = searchInput.value.toLowerCase();
+        const filter = this.value.toLowerCase();
 
-        let products =
+        const productCards =
             document.querySelectorAll(".product-card");
 
-        products.forEach(product => {
+        productCards.forEach(card => {
 
-            let text =
-                product.textContent.toLowerCase();
+            const text =
+                card.textContent.toLowerCase();
 
-            product.style.display =
+            card.style.display =
                 text.includes(filter) ? "" : "none";
 
         });
@@ -77,46 +28,3 @@ if (searchInput) {
     });
 
 }
-
-
-
-
-
-// =========================
-// Logout
-// =========================
-
-function logout() {
-
-    localStorage.removeItem("loggedInUser");
-
-    showToast("Logged Out Successfully");
-
-    window.location.href = "login.html";
-
-}
-
-
-// =========================
-// Auto Run
-// =========================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    if (typeof loadCart === "function") {
-        loadCart();
-    }
-
-    if (typeof loadWishlist === "function") {
-        loadWishlist();
-    }
-
-    if (typeof updateCartCount === "function") {
-        updateCartCount();
-    }
-
-    if (typeof updateWishlistCount === "function") {
-        updateWishlistCount();
-    }
-
-});

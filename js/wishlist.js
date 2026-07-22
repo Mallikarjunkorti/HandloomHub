@@ -37,7 +37,7 @@ function addToWishlist(id, name, price, image) {
 
     );
 
-    updateWishlistCount();
+    refreshNavbarCounts();
 
     showToast("❤️ Added to Wishlist");
 
@@ -177,9 +177,7 @@ function moveToCart(index) {
 
     loadCart();
 
-    updateCartCount();
-
-    updateWishlistCount();
+    refreshNavbarCounts();
 
     showToast("Moved to Cart 🛒");
 
@@ -207,7 +205,7 @@ function removeWishlist(index) {
 
     loadWishlist();
 
-    updateWishlistCount();
+    refreshNavbarCounts();
 
    showToast("❌ Removed from Wishlist");
 

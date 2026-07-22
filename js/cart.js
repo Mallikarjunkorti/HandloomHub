@@ -37,7 +37,7 @@ function addToCart(id, name, price, image, quantity = 1) {
         JSON.stringify(cart)
     );
 
-    updateCartCount();
+    refreshNavbarCounts();
 
     showToast("🛒 Product Added to Cart");
 
@@ -183,7 +183,7 @@ function removeItem(index) {
 
     loadCart();
 
-    updateCartCount();
+    refreshNavbarCounts();
 
 }
 
