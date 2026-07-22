@@ -3,13 +3,13 @@ const user = JSON.parse(
 );
 
 if (!user) {
-    alert("Please Login First");
+    showToast("Please Login First");
     window.location.href = "login.html";
 }
 
 // Optional: Only allow admin email
 if (user.email !== "mallikarjunkorti40@gmail.com") {
-    alert("Access Denied");
+    showToast("Access Denied");
     window.location.href = "index.html";
 }
 

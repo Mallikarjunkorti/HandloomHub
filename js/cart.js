@@ -39,7 +39,7 @@ function addToCart(id, name, price, image, quantity = 1) {
 
     updateCartCount();
 
-    alert("Product Added To Cart!");
+    showToast("🛒 Product Added to Cart");
 
 }
 

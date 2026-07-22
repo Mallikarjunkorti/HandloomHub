@@ -12,12 +12,14 @@ function renderFeaturedProducts() {
 
     container.innerHTML = "";
 
-   featuredProducts.forEach(product => {
+    featuredProducts.forEach(product => {
 
-    container.innerHTML += createProductCard(product);
+        container.innerHTML += createProductCard(product);
 
-});
+    });
 
 }
 
 renderFeaturedProducts();
+
+

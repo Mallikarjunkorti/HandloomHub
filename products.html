@@ -61,22 +61,162 @@
 
     <div class="container">
 
-        <h2>All Products</h2>
+        <div class="page-header">
 
-        <div id="productsGrid" class="products-grid"></div>
+            <h1>Our Collection</h1>
+
+            <p>
+                Discover handcrafted treasures from artisans across India.
+            </p>
+
+        </div>
+
+        <div class="products-toolbar">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search products...">
+
+            <select id="categoryFilter">
+
+                <option value="all">All Categories</option>
+
+                <option value="Sarees">Sarees</option>
+
+                <option value="Fabric">Fabrics</option>
+
+                <option value="Kurti">Kurtis</option>
+
+                <option value="Dupatta">Dupattas</option>
+
+            </select>
+
+            <select id="sortProducts">
+
+                <option value="featured">Featured</option>
+
+                <option value="rating">Highest Rated</option>
+
+                <option value="low">Price: Low to High</option>
+
+                <option value="high">Price: High to Low</option>
+
+            </select>
+
+        </div>
+
+        <div
+            id="productsGrid"
+            class="products-grid">
+
+        </div>
 
     </div>
 
 </section>
 
+<!-- ==========================================
+     QUICK VIEW MODAL
+========================================== -->
+
+<div id="quickViewModal" class="quick-view-modal">
+
+    <div class="quick-view-content">
+
+        <button id="closeModal" class="close-modal">
+
+           &times;
+
+        </button>
+
+        <div class="quick-view-grid">
+
+            <div class="quick-view-image">
+
+                <img
+                    id="modalImage"
+                    src=""
+                    alt="Product">
+
+            </div>
+
+            <div class="quick-view-details">
+
+                <span id="modalBadge" class="modal-badge"></span>
+
+                <h2 id="modalTitle"></h2>
+
+                <div class="modal-rating">
+
+                    ⭐
+                    <span id="modalRating"></span>
+
+                    (<span id="modalReviews"></span> Reviews)
+
+                </div>
+
+                <h3 id="modalPrice"></h3>
+
+                <div class="modal-features">
+
+                    <div class="feature-box">
+                        ✔ 100% Authentic Handloom
+                     </div>
+
+                    <div class="feature-box">
+                        🚚 Free Delivery
+                    </div>
+
+                    <div class="feature-box">
+                        🔒 Secure Payment
+                    </div>
+
+                </div>
+
+                <div class="modal-buttons">
+
+                    <button id="modalCart" class="btn btn-primary">
+
+                        🛒 Add to Cart
+
+                    </button>
+
+                    <button id="modalBuy" class="btn btn-secondary">
+
+                         ⚡ Buy Now
+
+                    </button>
+                </div>
+
+                <a
+                    id="modalPassport"
+                    class="passport-link"
+                    href="#">
+
+                    🛡 View Digital Passport →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+ <div id="toast" class="toast">
+    <span id="toastMessage"></span>
+ </div>
 <script src="js/storage.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/wishlist.js"></script>
 
 <script src="js/data/products.js"></script>
+<script src="js/events/product-events.js"></script>
 <script src="js/components/product-card.js"></script>
 <script src="js/pages/products-page.js"></script>
-
+<script src="js/components/toast.js"></script>
 <script src="js/script.js"></script>
 
 </body>

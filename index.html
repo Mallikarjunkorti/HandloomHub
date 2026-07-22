@@ -50,20 +50,14 @@
     <li>
         <a href="wishlist.html">
 
-            Wishlist
-
-            <span id="wishlistCount"></span>
-
+            Wishlist(<span id="wishlistCount"></span>)
         </a>
     </li>
 
     <li>
         <a href="cart.html">
 
-            Cart
-
-            <span id="cartCount"></span>
-
+            Cart(<span id="cartCount"></span>)
         </a>
     </li>
 
@@ -330,50 +324,27 @@
     <footer>
         <p>© 2026 HandloomHub</p>
     </footer>
-    <script>
-const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    
 
-const welcomeUser = document.getElementById("welcomeUser");
-const loginLink = document.getElementById("loginLink");
-const logoutLink = document.getElementById("logoutLink");
-const adminLink = document.getElementById("adminLink");
 
-// Hide Admin by default
-adminLink.style.display = "none";
-
-if (user) {
-
-    // Welcome message
-    welcomeUser.innerText = "Welcome, " + user.name;
-
-    // Show Logout
-    loginLink.style.display = "none";
-    logoutLink.style.display = "block";
-
-    // Show Admin ONLY for admin email
-    if (user.email === "mallikarjunkorti40@gmail.com") {
-        adminLink.style.display = "block";
-    }
-
-} else {
-
-    // Not logged in
-    loginLink.style.display = "block";
-    logoutLink.style.display = "none";
-    adminLink.style.display = "none";
-}
-
-function logout() {
-
-    localStorage.removeItem("loggedInUser");
-
-    alert("Logged Out Successfully");
-
-    window.location.href = "login.html";
-}
-</script>
+<!-- Toast Notification -->
+<div id="toast" class="toast">
+    <span id="toastMessage"></span>
+</div>
+<!-- Data -->
 <script src="js/data/products.js"></script>
+<script src="js/events/product-events.js"></script>
+<!-- Components -->
 <script src="js/components/product-card.js"></script>
+<script src="js/components/toast.js"></script>
+
+<!-- Core -->
+<script src="js/storage.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script src="js/script.js"></script>
+
+<!-- Page -->
 <script src="js/home.js"></script>
 </body>
 </html>

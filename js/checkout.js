@@ -12,7 +12,7 @@ const products =
 
 if (products.length === 0) {
 
-    alert("No Product Selected!");
+    showToast("No Product Selected!");
 
     window.location.href = "products.html";
 
@@ -77,7 +77,7 @@ document.getElementById("checkoutForm")
     const user = getLoggedInUser();
     if (!user) {
 
-        alert("Please Login First");
+        showToast("Please Login First");
 
         window.location.href = "login.html";
 
@@ -195,14 +195,14 @@ document.getElementById("checkoutForm")
                 localStorage.removeItem(getCartKey());
             }
 
-            alert("Order Placed Successfully!");
+            showToast("⚡ Order Placed Successfully");
 
             window.location.href =
                 "confirmation.html";
 
         } else {
 
-            alert(data.message);
+            showToast(data.message);
 
         }
 

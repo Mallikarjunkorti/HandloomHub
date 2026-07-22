@@ -75,7 +75,9 @@
     </p>
 
 </div>
-
+<div id="toast" class="toast">
+    <span id="toastMessage"></span>
+</div>
 <script>
 document.getElementById("registerForm")
 .addEventListener("submit", async (e) => {
@@ -95,7 +97,7 @@ document.getElementById("registerForm")
         document.getElementById("confirmPassword").value;
 
     if(password !== confirmPassword){
-        alert("Passwords do not match");
+        showToast("Passwords do not match");
         return;
     }
 
@@ -119,17 +121,18 @@ document.getElementById("registerForm")
         const data = await response.json();
 
         if(response.ok){
-            alert("Registration Successful");
+            showToast("Registration Successful");
             window.location.href = "login.html";
         } else {
-            alert(data.message);
+            shoowToast(data.message);
         }
 
     } catch(error){
         console.error(error);
-        alert("Server Error");
+        showToast("Server Error");
     }
 });
 </script>
+<script src="js/components/toast.js"></script>
 </body>
 </html>

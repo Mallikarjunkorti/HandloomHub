@@ -231,3 +231,65 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* ==========================================
+   REUSABLE PRODUCTS GRID
+========================================== */
+
+.products-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+
+}
+
+/* ==========================================
+   TOAST
+========================================== */
+
+.toast{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    background:#e2eee2;
+
+    color:rgb(17, 17, 17);
+
+    padding:16px 24px;
+
+    border-radius:12px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    z-index:999999;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(30px);
+
+    transition:all .35s ease;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}

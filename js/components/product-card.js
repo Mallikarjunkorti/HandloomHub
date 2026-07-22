@@ -12,7 +12,8 @@ function createProductCard(product) {
                 <span class="product-badge">${product.badge}</span>
             ` : ""}
 
-            <div class="product-image-box">
+            <div class="product-image-box quick-view-trigger"
+                data-id="${product.id}">
                 <img
                     src="${product.image}"
                     alt="${product.name}"
@@ -26,7 +27,8 @@ function createProductCard(product) {
                     <span>(${product.reviews})</span>
                 </div>
 
-                <h3 class="product-title">
+                <h3 class="product-title quick-view-trigger"
+                    data-id="${product.id}">
                     ${product.name}
                 </h3>
 
@@ -45,7 +47,7 @@ function createProductCard(product) {
                     <button
                         class="cart-btn"
                         data-id="${product.id}"
-                        onClick=>
+                        >
                         Add to Cart
                     </button>
 

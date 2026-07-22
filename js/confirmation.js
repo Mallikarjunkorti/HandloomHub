@@ -16,7 +16,7 @@ const order = JSON.parse(
 
 if (!order) {
 
-    alert("No Order Found!");
+    showToast("No Order Found!");
 
     window.location.href = "products.html";
 

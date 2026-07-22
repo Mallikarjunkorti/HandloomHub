@@ -1,93 +1,57 @@
-// ===============================
-// Product Data
-// ===============================
-
-const products = [
-
-{
-    id: 1,
-    name: "Mysore Silk Saree",
-    price: 4999,
-    image: "images/mysore-silk.jpg",
-    description:
-        "Premium Mysore Silk Saree crafted with traditional handloom techniques. Soft texture and elegant design.",
-    passport: "passport.html?id=1"
-},
-
-{
-    id: 2,
-    name: "Banarasi Saree",
-    price: 6499,
-    image: "images/banarasi.jpg",
-    description:
-        "Beautiful Banarasi Saree woven with rich zari work, perfect for weddings and festive occasions.",
-    passport: "passport.html?id=2"
-},
-
-{
-    id: 3,
-    name: "Cotton Fabric",
-    price: 899,
-    image: "images/cotton-fabric.jpg",
-    description:
-        "Soft premium handloom cotton fabric suitable for dresses, kurtis and home décor.",
-    passport: "passport.html?id=3"
-},
-
-{
-    id: 4,
-    name: "Kurti Material",
-    price: 1299,
-    image: "images/kurti.jpg",
-    description:
-        "Premium handloom kurti material made with natural cotton for daily and festive wear.",
-    passport: "passport.html?id=4"
-}
-
-];
-
-// ===============================
+// ======================================
 // Get Product ID
-// ===============================
+// ======================================
 
 const params = new URLSearchParams(window.location.search);
 
 const productId = Number(params.get("id"));
 
+// ======================================
+// Find Product
+// ======================================
+
 const product = products.find(p => p.id === productId);
 
-// ===============================
-// Load Product
-// ===============================
+if (!product) {
 
-if (product) {
-
-    document.getElementById("productImage").src =
-        product.image;
-
-    document.getElementById("productName").innerText =
-        product.name;
-
-    document.getElementById("productPrice").innerText =
-        "₹" + product.price;
-
-    document.getElementById("productDescription").innerText =
-        product.description;
-
-    document.getElementById("passportLink").href =
-        product.passport;
+    window.location.href = "products.html";
 
 }
 
-// ===============================
+// ======================================
+// Fill Product Details
+// ======================================
+
+document.getElementById("productImage").src = product.image;
+
+document.getElementById("productName").innerText = product.name;
+
+document.getElementById("productPrice").innerText =
+    "₹" + product.price.toLocaleString("en-IN");
+
+document.getElementById("productRating").innerText =
+    product.rating || 4.8;
+
+document.getElementById("productReviews").innerText =
+    product.reviews || 0;
+
+document.getElementById("productDescription").innerText =
+    product.description ||
+    "Authentic handcrafted product made by skilled Indian artisans.";
+
+document.getElementById("passportLink").href =
+    `passport.html?id=${product.id}`;
+
+// ======================================
 // Add To Cart
-// ===============================
+// ======================================
 
 document.getElementById("addToCartBtn")
 .addEventListener("click", function () {
 
-    const qty =
-        Number(document.getElementById("quantity").value);
+    const qty = Number(
+        document.getElementById("quantity").value
+    );
 
     addToCart(
 
@@ -105,9 +69,9 @@ document.getElementById("addToCartBtn")
 
 });
 
-// ===============================
+// ======================================
 // Wishlist
-// ===============================
+// ======================================
 
 document.getElementById("wishlistBtn")
 .addEventListener("click", function () {
@@ -126,35 +90,61 @@ document.getElementById("wishlistBtn")
 
 });
 
-// ===============================
+// ======================================
 // Buy Now
-// ===============================
+// ======================================
 
 document.getElementById("buyNowBtn")
 .addEventListener("click", function () {
 
-    const qty =
-        Number(document.getElementById("quantity").value);
+    const qty = Number(
+        document.getElementById("quantity").value
+    );
 
     const buyNowProduct = {
 
-        id: product.id,
-
-        name: product.name,
-
-        price: product.price,
-
-        image: product.image,
+        ...product,
 
         quantity: qty
 
     };
 
     localStorage.setItem(
-    getBuyNowKey(),
-    JSON.stringify(buyNowProduct)
+
+        getBuyNowKey(),
+
+        JSON.stringify(buyNowProduct)
+
     );
 
     window.location.href = "checkout.html";
 
 });
+
+// ======================================
+// Similar Handloom Picks
+// ======================================
+
+const relatedContainer =
+    document.getElementById("relatedProducts");
+
+if (relatedContainer) {
+
+    const relatedProducts = products
+        .filter(item =>
+
+            item.category === product.category &&
+
+            item.id !== product.id
+
+        )
+        .slice(0, 4);
+
+    relatedProducts.forEach(item => {
+
+        relatedContainer.innerHTML +=
+            createProductCard(item);
+
+    });
+
+}

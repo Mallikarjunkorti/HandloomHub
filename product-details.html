@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/products.css">
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/details.css">
@@ -58,9 +59,20 @@
     <div class="details-content">
 
         <h1 id="productName"></h1>
+        <div class="product-rating">
+
+            ⭐ <span id="productRating"></span>
+
+            (<span id="productReviews"></span> Reviews)
+
+        </div>
 
         <h2 id="productPrice"></h2>
+            <div class="stock-status">
 
+                🔥 Limited Stock
+
+            </div>
         <p id="productDescription"></p>
 
         <label>Quantity</label>
@@ -101,41 +113,48 @@
 
 </section>
 
-<!-- Related Products -->
+<!-- ==========================================
+     Similar Handloom Picks
+========================================== -->
 
 <section class="related-products">
 
-    <h2>Related Products</h2>
+    <div class="container">
 
-    <div class="product-grid">
+        <div class="section-title">
 
-        <div class="product-card">
+            <span>You May Also Like</span>
 
-            <img src="images/banarasi.jpg">
+            <h2>✨ Similar Handloom Picks</h2>
 
-            <h3>Banarasi Saree</h3>
+            <p>
 
-            <p>₹6499</p>
+                Explore more handcrafted products from our artisans.
+
+            </p>
 
         </div>
 
-        <div class="product-card">
-
-            <img src="images/dupatta.jpg">
-
-            <h3>Handloom Dupatta</h3>
-
-            <p>₹699</p>
+        <div
+            id="relatedProducts"
+            class="products-grid">
 
         </div>
 
     </div>
 
 </section>
-
+<div id="toast" class="toast">
+    <span id="toastMessage"></span>
+</div>
 <script src="js/storage.js"></script>
 <script src="js/cart.js"></script>
 <script src="js/wishlist.js"></script>
+<script src="js/components/toast.js"></script>
+<script src="js/data/products.js"></script>
+<script src="js/events/product-events.js"></script>
+<script src="js/components/product-card.js"></script>
+<script src="js/components/toast.js"></script>
 <script src="js/script.js"></script>
 <script src="js/product-details.js"></script>
 </body>

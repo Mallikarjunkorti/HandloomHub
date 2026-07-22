@@ -12,7 +12,7 @@ function addToWishlist(id, name, price, image) {
 
     if (existingItem) {
 
-        alert("Product already in Wishlist ❤️");
+        showToast("Product already in Wishlist ❤️");
         return;
 
     }
@@ -39,7 +39,7 @@ function addToWishlist(id, name, price, image) {
 
     updateWishlistCount();
 
-    alert("Added to Wishlist ❤️");
+    showToast("❤️ Added to Wishlist");
 
 }
 
@@ -181,7 +181,7 @@ function moveToCart(index) {
 
     updateWishlistCount();
 
-    alert("Moved to Cart 🛒");
+    showToast("Moved to Cart 🛒");
 
 }
 
@@ -209,6 +209,6 @@ function removeWishlist(index) {
 
     updateWishlistCount();
 
-    alert("Removed from Wishlist");
+   showToast("❌ Removed from Wishlist");
 
 }
