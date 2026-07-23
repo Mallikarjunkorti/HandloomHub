@@ -3,17 +3,11 @@
 ========================================== */
 
 .hero{
-
-    position:relative;
-
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    overflow:hidden;
-
+    position: relative;
+    height: 680px;      /* instead of 90vh */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
 
 /* Background Image */
@@ -102,20 +96,14 @@
 
     font-weight:600;
 
-    margin-bottom:30px;
+    margin-bottom:20px;
 
 }
 
 .hero h1{
-
-    font-size:72px;
-
+    font-size:60px;
     line-height:1.1;
-
-    color:#7A4520;
-
-    margin-bottom:25px;
-
+    margin-bottom:20px;
 }
 
 .hero-divider{
@@ -128,7 +116,7 @@
 
     color:#5C7A3F;
 
-    margin-bottom:30px;
+    margin-bottom:20px;
 
 }
 
@@ -143,17 +131,9 @@
 }
 
 .hero p{
-
-    font-size:21px;
-
-    line-height:1.8;
-
-    color:#555;
-
-    max-width:600px;
-
-    margin-bottom:40px;
-
+    font-size:20px;
+    line-height:1.7;
+    margin-bottom:25px;
 }
 
 .hero-buttons{
@@ -668,4 +648,19 @@ grid-template-columns:1fr;
 
     z-index:5;
 
+}
+
+/* ==========================================
+   SCROLL REVEAL
+========================================== */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:opacity .5s ease, transform .5s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
 }

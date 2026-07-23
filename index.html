@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/home.css">
-
+<link rel="stylesheet" href="css/footer.css">
 <!-- Existing CSS -->
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -27,9 +27,21 @@
 
 <div class="logo">
 
-    🧵
+    <a href="index.html">
 
-    <span>HandloomHub</span>
+        <img
+            src="images/logo.png"
+            alt="HandloomHub Logo">
+
+        <div class="logo-text">
+
+            <h1>HandloomHub</h1>
+
+            <p>TRADITION. TRUST. TRANSPARENCY.</p>
+
+        </div>
+
+    </a>
 
 </div>
 
@@ -158,7 +170,7 @@
 <!-- ==========================================
      STATISTICS
 ========================================== -->
-
+<section class="stats reveal">
 <section class="stats">
 
     <div class="container">
@@ -169,7 +181,7 @@
 
                 <div class="stat-icon">👨‍🎨</div>
 
-                <h2>150+</h2>
+                <h2 class="counter" data-target="150">0</h2>
 
                 <p>Verified Artisans</p>
 
@@ -179,7 +191,7 @@
 
                 <div class="stat-icon">🛍️</div>
 
-                <h2>500+</h2>
+                <h2 class="counter" data-target="500">0</h2>
 
                 <p>Premium Products</p>
 
@@ -189,7 +201,7 @@
 
                 <div class="stat-icon">🛡️</div>
 
-                <h2>100%</h2>
+                <h2 class="counter" data-target="100">0</h2>
 
                 <p>Authentic Products</p>
 
@@ -199,7 +211,7 @@
 
                 <div class="stat-icon">🇮🇳</div>
 
-                <h2>24</h2>
+                <h2 class="counter" data-target="24">0</h2>
 
                 <p>States Connected</p>
 
@@ -210,11 +222,11 @@
     </div>
 
 </section>
-
+</section>
 <!-- ==========================================
      CATEGORIES
 ========================================== -->
-
+<section class="categories reveal">
 <section class="categories">
 
     <div class="container">
@@ -289,11 +301,11 @@
     </div>
 
 </section>
-
+</section>
    <!-- ==========================================
      FEATURED PRODUCTS
 ========================================== -->
-
+<section class="featured-products reveal">
 <section class="featured-products">
 
     <div class="container">
@@ -321,10 +333,105 @@
     </div>
 
 </section>
-    <footer>
-        <p>© 2026 HandloomHub</p>
-    </footer>
-    
+</section>
+    <!-- ==========================================
+     FOOTER
+========================================== -->
+<footer class="footer reveal">
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- Company -->
+
+            <div class="footer-column">
+
+                
+
+                <p>
+
+                    Connecting India's traditional artisans with the
+                    modern digital world through authentic handloom
+                    products and Digital Product Passports.
+
+                </p>
+
+            </div>
+
+            <!-- Quick Links -->
+
+            <div class="footer-column">
+
+                <h3>Quick Links</h3>
+
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="products.html">Products</a></li>
+
+                    <li><a href="orders.html">Orders</a></li>
+
+                    <li><a href="passport.html?id=1">Passport</a></li>
+
+                </ul>
+
+            </div>
+
+            <!-- Support -->
+
+            <div class="footer-column">
+
+                <h3>Support</h3>
+
+                <ul>
+
+                    <li>📧 support@handloomhub.in</li>
+
+                    <li>📞 +91 890437 9664</li>
+
+                    <li>📍 Karnataka, India</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Follow -->
+
+            <div class="footer-column">
+
+                <h3>Follow Us</h3>
+
+                <div class="social-icons">
+
+                    <a href="https://www.instagram.com/_mallu_korti?igsh=NXF4d2M0cjVraGI5">🌐</a>
+
+                    <a href="#">📸 </a>
+
+                    <a href="https://www.linkedin.com/in/mallikarjun-korti-2724ba3a2">💼</a>
+
+                    <a href="#">🐙</a>
+                    
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="footer-bottom">
+
+            © 2026 HandloomHub • Made with ❤️ in India
+
+        </div>
+
+    </div>
+
+</footer>
+   </footer> 
 
 
 <!-- Toast Notification -->
@@ -337,7 +444,7 @@
 <!-- Components -->
 <script src="js/components/product-card.js"></script>
 <script src="js/components/toast.js"></script>
-
+<script src="js/components/counter.js"></script>
 <!-- Core -->
 <script src="js/storage.js"></script>
 <script src="js/cart.js"></script>
@@ -347,5 +454,6 @@
 
 <!-- Page -->
 <script src="js/home.js"></script>
+<script src="js/components/scroll-reveal.js"></script>
 </body>
 </html>

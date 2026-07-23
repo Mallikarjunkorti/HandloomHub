@@ -22,7 +22,7 @@ max-width:1200px;
 
 margin:auto;
 
-height:80px;
+height:70px;
 
 padding:0 20px;
 
@@ -181,6 +181,71 @@ gap:15px;
 
 margin-top:15px;
 
+}
+
+}
+
+/* =========================
+   Logo
+========================= */
+
+.logo a{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    text-decoration:none;
+}
+
+.logo img{
+    width:72px;
+    height:72px;
+    object-fit:contain;
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.logo-text h1{
+    margin:0;
+    font-size:30px;
+    font-family:Georgia, serif;
+    color:#eae3e3;
+    font-weight:700;
+    line-height:1;
+}
+
+.logo-text p{
+    margin-top:5px;
+    font-size:9px;
+    letter-spacing:2px;
+    color:#1c8b03;
+    font-weight:800;
+}
+
+.logo a:hover img{
+    transform:scale(1.05);
+    transition:.3s;
+}
+
+/*.logo a:hover h1{
+    color:#8B4513;
+}*/
+
+@media (max-width:768px){
+
+.logo img{
+    width:55px;
+    height:55px;
+}
+
+.logo-text h1{
+    font-size:28px;
+}
+
+.logo-text p{
+    display:none;
 }
 
 }
