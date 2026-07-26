@@ -18,6 +18,8 @@ function initNavbar() {
     const loginLink = document.getElementById("loginLink");
     const logoutLink = document.getElementById("logoutLink");
     const adminLink = document.getElementById("adminLink");
+    const profileLink = document.getElementById("profileLink");
+    const navbarUserName = document.getElementById("navbarUserName");
     const welcomeUser = document.getElementById("welcomeUser");
 
     // Login / Logout
@@ -34,10 +36,18 @@ function initNavbar() {
 
         if (user) {
 
-            welcomeUser.innerHTML = `Welcome, ${user.name}`;
+            if(profileLink){
+                 profileLink.style.display = "block";
+            }
+
+            if(navbarUserName){
+                navbarUserName.textContent = user.name;
+            }
 
         } else {
-
+                if(profileLink){
+                    profileLink.style.display = "none";
+                }
             welcomeUser.innerHTML = "";
 
         }

@@ -1,0 +1,133 @@
+/* ==========================================
+   SEARCH SUGGESTIONS
+========================================== */
+
+.search-container{
+
+    position:relative;
+
+    width:100%;
+
+}
+
+#searchSuggestions{
+
+    position:absolute;
+
+    top:100%;
+
+    left:0;
+
+    width:100%;
+
+    background:#fff;
+
+    border-radius:16px;
+
+    margin-top:10px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.12);
+
+    overflow:hidden;
+
+    z-index:999;
+
+    display:none;
+
+}
+
+.search-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.search-item:hover{
+
+    background:#F8F5F0;
+
+}
+
+.search-item img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:10px;
+
+    object-fit:cover;
+
+}
+
+.search-info{
+
+    flex:1;
+
+}
+
+.search-info h4{
+
+    margin:0;
+
+    color:#2B2B2B;
+
+    font-size:16px;
+
+}
+
+.search-info p{
+
+    margin:4px 0 0;
+
+    color:#8B5E34;
+
+    font-weight:600;
+
+}
+
+.no-result{
+
+    justify-content:center;
+
+    color:#777;
+
+    font-weight:600;
+
+    padding:18px;
+
+}
+
+.search-item{
+
+    transition:.25s;
+
+}
+
+.search-item:hover{
+
+    background:#F8F5F0;
+
+}
+
+.search-item img{
+
+    border-radius:12px;
+
+}
+
+.active-search{
+
+    background:#F2D7B5;
+
+}

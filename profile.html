@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - HandloomHub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+<section class="profile-page">
+    
+    <div class="container">
+
+        <div class="profile-grid">
+
+            <!-- Left Card -->
+
+            <div class="profile-card">
+
+                <div class="profile-photo-wrapper">
+
+                    <img
+                        id="profilePhoto"
+                        src="images/avatar.png"
+                        class="profile-photo"
+                        alt="Profile">
+
+                    <div class="camera-icon">
+
+                        📷
+
+                    </div>
+
+                </div>
+
+                <input
+                    type="file"
+                    id="photoInput"
+                    accept="image/*"
+                    hidden>
+                    
+                <h2 id="profileName">Loading...</h2>
+
+                <p id="profileEmail">Loading...</p>
+
+                <button
+                    id="editProfileBtn"
+                     class="edit-profile-btn">
+
+                        ✏ Edit Profile
+
+                </button>
+
+            </div>
+            
+            <!-- Right -->
+
+            <div class="dashboard">
+
+                <h2>👋 Welcome Back!</h2>
+
+                <p>
+
+                    Manage your account and shopping activity.
+
+                </p>
+
+                <!-- Summary -->
+
+                <div class="summary-grid">
+
+                    <div class="summary-card">
+
+                        <h3 id="ordersCount">0</h3>
+
+                        <span>📦 Orders</span>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <h3 id="wishlistCountProfile">0</h3>
+
+                        <span>❤️ Wishlist</span>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <h3 id="cartCountProfile">0</h3>
+
+                        <span>🛒 Cart</span>
+
+                    </div>
+
+                </div>
+
+                <!-- Quick Actions -->
+
+                <div class="action-grid">
+
+                    <a href="orders.html" class="action-card">
+
+                        📦
+
+                        <span>My Orders</span>
+
+                    </a>
+
+                    <a href="wishlist.html" class="action-card">
+
+                        ❤️
+
+                        <span>Wishlist</span>
+
+                    </a>
+
+                    <a href="#" id="addressCard" class="action-card">
+
+                        📍
+
+                        <span>Addresses</span>
+
+                    </a>
+
+                    <a href="#" class="action-card">
+
+                        ⚙️
+
+                        <span>Settings</span>
+
+                    </a>
+
+                    <a href="#" class="action-card">
+
+                        🔐
+
+                        <span>Password</span>
+
+                    </a>
+
+                    <a href="#" onclick="logout()" class="action-card">
+
+                        🚪
+
+                        <span>Logout</span>
+
+                    </a>
+
+                </div>
+
+                <!-- Saved Address -->
+
+                <div class="saved-address-card">
+
+                     <h3>📍 Default Delivery Address</h3>
+
+                    <div id="savedAddress">
+
+                        <p>No address added yet.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="modal">
+
+    <div class="modal-content">
+
+        <span
+            id="closeProfileModal"
+            class="close-modal">
+
+                &times;
+
+        </span>
+
+        <h2>Edit Profile</h2>
+
+        <form id="profileForm">
+
+            <input
+                type="text"
+                id="editName"
+                placeholder="Full Name"
+                required>
+
+            <input
+                type="email"
+                id="editEmail"
+                readonly>
+
+            <input
+                type="tel"
+                id="editPhone"
+                placeholder="Phone Number">
+
+            <select id="editGender">
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <input
+                type="date"
+                id="editDOB">
+
+            <button type="submit" class="save-btn">
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- Address Modal -->
+
+<div id="addressModal" class="modal">
+
+    <div class="modal-content">
+
+        <span id="closeAddressModal" class="close-modal">&times;</span>
+
+        <h2>📍 Delivery Address</h2>
+
+        <form id="addressForm">
+
+            <input
+                type="text"
+                id="fullName"
+                placeholder="Full Name"
+                required>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Phone Number"
+                required>
+
+            <textarea
+                id="address"
+                placeholder="Full Address"
+                rows="4"
+                required></textarea>
+
+            <input
+                type="text"
+                id="city"
+                placeholder="City"
+                required>
+
+            <input
+                type="text"
+                id="state"
+                placeholder="State"
+                required>
+
+            <input
+                type="text"
+                id="pincode"
+                placeholder="Pincode"
+                required>
+
+            <button
+                type="submit"
+                class="save-btn">
+
+                Save Address
+
+            </button>
+            
+
+        </form>
+
+     </div>   
+
+</div>
+
+<div id="toast" class="toast">
+    <span id="toastMessage"></span>
+</div>
+
+<script src="js/components/toast.js"></script>
+<script src="js/profile.js"></script>
+
+</body>
+</html>

@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/products.css">
+<!-- NEW -->
+<link rel="stylesheet" href="css/search.css">
 </head>
 <body>
 
@@ -73,11 +75,16 @@
 
         <div class="products-toolbar">
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="🔍 Search products...">
+            <div class="search-container">
 
+                <input
+                    type="text"
+                     id="searchInput"
+                    placeholder="🔍 Search handloom products...">
+
+                <div id="searchSuggestions"></div>
+
+            </div>
             <select id="categoryFilter">
 
                 <option value="all">All Categories</option>
@@ -213,12 +220,22 @@
 <script src="js/wishlist.js"></script>
 
 <script src="js/data/products.js"></script>
-<script src="js/events/product-events.js"></script>
+
 <script src="js/components/product-card.js"></script>
+
+<script src="js/events/product-events.js"></script>
+
+<script src="js/components/search.js"></script>
+
 <script src="js/pages/products-page.js"></script>
-<script src="js/components/toast.js"></script>
+
 <script src="js/components/navbar.js"></script>
+
+<script src="js/components/toast.js"></script>
+
 <script src="js/script.js"></script>
 
+<!-- LAST -->
+<script src="js/components/search-suggestions.js"></script>
 </body>
 </html>

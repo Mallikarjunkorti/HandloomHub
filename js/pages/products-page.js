@@ -115,6 +115,7 @@ function applyFilters() {
 
     }
 
+    showSuggestions(searchText);
     renderProducts();
 
 }
