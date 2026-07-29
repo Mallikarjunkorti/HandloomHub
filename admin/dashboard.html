@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | HandloomHub</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../admin/admin.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- ==========================
+         Sidebar
+    =========================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <img src="../images/logo.png" alt="Logo">
+
+            <h2>HandloomHub</h2>
+
+            <span>Admin Panel</span>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+                <i class="fas fa-chart-line"></i>
+                Dashboard
+            </li>
+
+            <li onclick="location.href='products.html'">
+                <i class="fas fa-box-open"></i>
+                Products
+            </li>
+
+            <li onclick="location.href='orders.html'">
+                <i class="fas fa-shopping-bag"></i>
+                Orders
+            </li>
+
+            <li onclick="location.href='users.html'">
+                <i class="fas fa-users"></i>
+                Users
+            </li>
+
+            <li onclick="location.href='reports.html'">
+                <i class="fas fa-chart-pie"></i>
+                Reports
+            </li>
+
+            <li onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- ==========================
+         Main Content
+    =========================== -->
+
+    <main class="dashboard">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>Dashboard</h1>
+
+                <p>Welcome to HandloomHub Admin</p>
+
+            </div>
+
+            <div class="admin-profile">
+
+                <img src="../images/avatar.png" alt="Admin">
+
+                <span>Administrator</span>
+
+            </div>
+
+        </header>
+
+        <!-- ======================
+             Dashboard Cards
+        ======================= -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <i class="fas fa-users"></i>
+
+                <div>
+
+                    <h3 id="usersCount">0</h3>
+
+                    <p>Total Users</p>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fas fa-box-open"></i>
+
+                <div>
+
+                    <h3 id="productsCount">0</h3>
+
+                    <p>Total Products</p>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <div>
+
+                    <h3 id="ordersCount">0</h3>
+
+                    <p>Total Orders</p>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fas fa-indian-rupee-sign"></i>
+
+                <div>
+
+                    <h3 id="revenueCount">₹0</h3>
+
+                    <p>Total Revenue</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================
+             Chart + Top Products
+        ======================= -->
+
+        <section class="grid">
+
+            <div class="chart-card">
+
+                <h2>Monthly Sales</h2>
+
+                <canvas id="salesChart"></canvas>
+
+            </div>
+
+            <div class="top-products">
+
+                <h2>Top Selling Products</h2>
+
+                <div id="topProductsList">
+
+                    Loading...
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================
+             Recent Orders
+        ======================= -->
+
+        <section class="recent-orders">
+
+            <h2>Recent Orders</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Order ID</th>
+
+                        <th>Customer</th>
+
+                        <th>Total</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="recentOrdersTable">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="../js/admin.js"></script>
+
+</body>
+
+</html>

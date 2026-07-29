@@ -9,6 +9,37 @@ const ordersContainer = document.getElementById("ordersContainer");
 const orders =
     JSON.parse(localStorage.getItem(getOrdersKey())) || [];
 
+// ======================================
+// ORDER SUMMARY
+// ======================================
+
+const totalOrders = orders.length;
+
+const processingOrders =
+    orders.filter(order => order.status === "Processing").length;
+
+const shippedOrders =
+    orders.filter(order => order.status === "Shipped").length;
+
+const deliveredOrders =
+    orders.filter(order => order.status === "Delivered").length;
+
+if (document.getElementById("totalOrders")) {
+
+    document.getElementById("totalOrders").textContent =
+        totalOrders;
+
+    document.getElementById("processingOrders").textContent =
+        processingOrders;
+
+    document.getElementById("shippedOrders").textContent =
+        shippedOrders;
+
+    document.getElementById("deliveredOrders").textContent =
+        deliveredOrders;
+
+}
+
 if (orders.length === 0) {
 
     ordersContainer.innerHTML = `
@@ -41,10 +72,8 @@ if (orders.length === 0) {
 
                 <img
                     src="${product.image}"
-                    width="120"
-                    height="120"
-                    style="border-radius:10px;object-fit:cover;">
-
+                    class="order-image"
+                    alt="${product.name}">
                 <div>
 
                     <h2>${product.name}</h2>
@@ -59,14 +88,14 @@ if (orders.length === 0) {
                         ₹${product.price}
                     </p>
 
-                    <button
+                    <button class="order-btn passport-btn"
                         onclick="window.location.href='passport.html?id=${product.id}'">
 
-                        🧵 View Passport
+                        🛡 Passport
 
                     </button>
 
-                    <button
+                    <button class="order-btn buy-btn"
                         onclick='buyAgain(${JSON.stringify(product).replace(/"/g,"&quot;")})'>
 
                         🔄 Buy Again
@@ -85,7 +114,7 @@ if (orders.length === 0) {
 
         ordersContainer.innerHTML += `
 
-        <div class="order-card">
+        <div class="order-card fade-in">
 
             <h3>📦 Order Details</h3>
 
@@ -112,7 +141,7 @@ if (orders.length === 0) {
             <p>
                 <strong>Status:</strong>
 
-                <span style="color:orange;font-weight:bold;">
+               <span class="status-badge ${order.status.toLowerCase()}">
                     ${order.status}
                 </span>
 
@@ -122,10 +151,19 @@ if (orders.length === 0) {
 
             ${productsHTML}
 
-            <button
-                onclick="trackOrder('${order.orderId}')">
+            <button class="order-btn track-btn"
+                    onclick="trackOrder('${order.orderId}')">
 
                 🚚 Track Order
+
+            </button>
+            
+            
+
+            <button class="order-btn invoice-btn"
+                    onclick="downloadInvoice('${order.orderId}')">
+
+                    ⬇ Download Invoice
 
             </button>
 
@@ -145,45 +183,77 @@ if (orders.length === 0) {
 
 function trackOrder(orderId){
 
-    showToast(
+    const modal = document.getElementById("trackModal");
 
-`Order ID : ${orderId}
+    const content = document.getElementById("trackingContent");
 
-Current Status : Processing
+    content.innerHTML = `
 
-Next Step :
-Your order will be shipped soon 🚚`
+        <h3>Order ID: ${orderId}</h3>
 
-    );
+        <div class="tracking-step completed">
+            ✅ Order Placed
+        </div>
+
+        <div class="tracking-step completed">
+            📦 Packed
+        </div>
+
+        <div class="tracking-step current">
+            🚚 Shipped
+        </div>
+
+        <div class="tracking-step pending">
+            🚛 Out For Delivery
+        </div>
+
+        <div class="tracking-step pending">
+            🏠 Delivered
+        </div>
+
+        <br>
+
+        <strong>Estimated Delivery: 31 July 2026</strong>
+
+    `;
+
+    modal.style.display = "flex";
 
 }
 
+const closeTrackModal =
+document.getElementById("closeTrackModal");
+
+if(closeTrackModal){
+
+    closeTrackModal.onclick = function(){
+
+        document.getElementById("trackModal").style.display="none";
+
+    };
+
+}
+
+window.addEventListener("click", function(e){
+
+    const modal = document.getElementById("trackModal");
+
+    if(modal && e.target === modal){
+
+        modal.style.display = "none";
+
+    }
+
+});
+
 // ===============================
-// Buy Again
+// Download Invoice
 // ===============================
 
-function buyAgain(product){
+function downloadInvoice(orderId){
 
-    localStorage.setItem(
+    localStorage.setItem("selectedInvoiceOrder", orderId);
 
-        getBuyNowKey(),
-
-        JSON.stringify({
-
-            id: product.id,
-
-            name: product.name,
-
-            price: product.price,
-
-            image: product.image,
-
-            quantity: 1
-
-        })
-
-    );
-
-    window.location.href = "checkout.html";
+    window.location.href = "invoice.html";
 
 }

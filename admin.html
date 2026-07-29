@@ -18,20 +18,66 @@
 <body>
 
 <header>
-    <nav class="admin-nav">
+  <nav class="admin-nav">
     <h2>🧵 HandloomHub Admin</h2>
 
     <ul>
         <li><a href="index.html">🏠 Home</a></li>
         <li><a href="products.html">📦 Products</a></li>
-        <li><a href="admin.html">📊 Dashboard</a></li>
+        <li><a href="profile.html">🤵 Profile</a></li>
+        <li><a href="reports.html">📈 Reports</a></li>
     </ul>
-</nav>
+
+    <div class="notification-wrapper">
+
+    <button class="notification-btn" onclick="toggleNotifications()">
+        🔔
+        <span class="notification-count" id="notificationCount">3</span>
+    </button>
+
+    <div class="notification-panel" id="notificationPanel">
+
+        <h3>Notifications</h3>
+
+        <div id="notificationList"></div>
+
+    </div>
+
+    </div>
+
+  </nav>
 </header>
 
 <section class="dashboard">
 
     <h1>Admin Dashboard</h1>
+
+    <div class="search-box">
+
+    <input
+        type="text"
+        id="dashboardSearch"
+        placeholder="🔍 Search users, products or orders..."
+        onkeyup="searchDashboard()"
+        >
+
+    </div>
+
+    <div class="export-buttons">
+
+     <button onclick="exportTable('usersTableExport','users.csv')">
+        👥 Export Users
+     </button>
+
+     <button onclick="exportTable('productsTableExport','products.csv')">
+        📦 Export Products
+     </button>
+
+     <button onclick="exportTable('ordersTableExport','orders.csv')">
+        🛒 Export Orders
+     </button>
+
+    </div>
 
     <div class="stats">
 
@@ -57,11 +103,70 @@
 
 </div>
 
+<!-- Dashboard Analytics -->
+
+<div class="analytics">
+
+    <div class="chart-box">
+        <h2>📈 Monthly Revenue</h2>
+        <canvas id="salesChart"></canvas>
+    </div>
+
+    <div class="summary-box">
+
+        <h2>📊 Quick Summary</h2>
+
+        <div class="summary-item">
+            <span>Today's Orders</span>
+            <strong id="todayOrders">0</strong>
+        </div>
+
+        <div class="summary-item">
+            <span>Pending Orders</span>
+            <strong id="pendingOrders">0</strong>
+        </div>
+
+        <div class="summary-item">
+            <span>Delivered</span>
+            <strong id="deliveredOrders">0</strong>
+        </div>
+
+        <div class="summary-item">
+            <span>Cancelled</span>
+            <strong id="cancelledOrders">0</strong>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Top Selling Products -->
+
+<div class="top-products-card">
+
+    <h2>🔥 Top Selling Products</h2>
+
+    <div id="topProductsList"></div>
+
+</div>
+
+<!-- Low Stock Alerts -->
+
+<div class="low-stock-card">
+
+    <h2>⚠️ Low Stock Alerts</h2>
+
+    <div id="lowStockList">
+
+    </div>
+
+</div>
+
     <!-- Users Table -->
 
     <h2>Users</h2>
 
-    <table>
+    <table id="usersTableExport">
         <thead>
             <tr>
                 <th>Name</th>
@@ -80,7 +185,7 @@
 
     <h2>Products</h2>
 
-    <table>
+    <table id="productsTableExport">
         <thead>
             <tr>
                <th>Product Name</th>
@@ -100,7 +205,7 @@
 
     <h2>Orders</h2>
 
-    <table>
+    <table id="ordersTableExport">
         <thead>
             <tr>
                 <th>User ID</th>
@@ -119,6 +224,7 @@
 <div id="toast" class="toast">
     <span id="toastMessage"></span>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/components/toast.js"></script>
 <script src="js/components/navbar.js"></script>

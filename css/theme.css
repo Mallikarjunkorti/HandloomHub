@@ -9,11 +9,12 @@
 --surface:#FFFFFF;
 --accent:#2F6B4F;
 
---text:#ffffff;
+--text:#000;
+;
 --text-light:#666666;
 
 --radius:16px;
-
+--nav-text:#FFFFFF;
 --shadow:
 0 10px 30px rgba(0,0,0,.08);
 

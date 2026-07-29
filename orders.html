@@ -30,15 +30,97 @@
     </nav>
 </header>
 
-<section class="orders-container">
+<section class="orders-page">
 
-    <h1>📦 My Orders</h1>
+    <div class="container">
 
-    <div id="ordersContainer">
+        <div class="orders-header">
+
+            <h1>📦 My Orders</h1>
+
+            <p>
+
+                Track your purchases and explore the journey of every handcrafted product.
+
+            </p>
+
+        </div>
+
+        <!-- Summary -->
+
+        <div class="orders-summary">
+
+            <div class="summary-card">
+
+                <h2 id="totalOrders">0</h2>
+
+                <span>Total Orders</span>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h2 id="processingOrders">0</h2>
+
+                <span>Processing</span>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h2 id="shippedOrders">0</h2>
+
+                <span>Shipped</span>
+
+            </div>
+
+            <div class="summary-card">
+
+                <h2 id="deliveredOrders">0</h2>
+
+                <span>Delivered</span>
+
+            </div>
+
+        </div>
+
+        <!-- Search -->
+
+        <div class="orders-toolbar">
+
+            <input
+
+                type="text"
+
+                id="orderSearch"
+
+                placeholder="🔍 Search Order ID or Product">
+
+        </div>
+
+        <div id="ordersContainer">
+
+        </div>
 
     </div>
 
 </section>
+<!-- Track Order Modal -->
+
+<div id="trackModal" class="modal">
+
+    <div class="modal-content">
+
+        <span id="closeTrackModal" class="close-modal">&times;</span>
+
+        <h2>📦 Order Tracking</h2>
+
+        <div id="trackingContent"></div>
+
+    </div>
+
+</div>
+
 <div id="toast" class="toast">
     <span id="toastMessage"></span>
 </div>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Reports | HandloomHub</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/admin.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="admin-nav">
+
+<h2>📊 Reports</h2>
+
+<ul>
+
+<li><a href="admin.html">Dashboard</a></li>
+
+<li><a href="products.html">Products</a></li>
+
+<li><a href="orders.html">Orders</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="dashboard">
+
+<h1>Business Reports</h1>
+
+<div class="stats">
+
+<div class="card">
+
+<h3>Total Revenue</h3>
+
+<h1 id="reportRevenue">₹0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Orders</h3>
+
+<h1 id="reportOrders">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Users</h3>
+
+<h1 id="reportUsers">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Total Products</h3>
+
+<h1 id="reportProducts">0</h1>
+
+</div>
+
+</div>
+
+<div class="analytics">
+
+<div class="chart-box">
+
+<h2>📈 Monthly Revenue</h2>
+
+<canvas id="monthlyRevenueChart"></canvas>
+
+</div>
+
+<div class="chart-box">
+
+<h2>🥧 Product Categories</h2>
+
+<canvas id="categoryChart"></canvas>
+
+</div>
+
+</div>
+
+<div class="analytics">
+
+<div class="chart-box">
+
+<h2>📦 Order Status</h2>
+
+<canvas id="statusChart"></canvas>
+
+</div>
+
+<div class="chart-box">
+
+<h2>🏆 Best Selling Products</h2>
+
+<canvas id="productChart"></canvas>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="js/reports.js"></script>
+
+</body>
+</html>

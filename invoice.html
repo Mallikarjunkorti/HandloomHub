@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HandloomHub - Tax Invoice</title>
+
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/invoice.css">
+
+</head>
+
+<body>
+
+<div class="invoice-page" id="invoice">
+
+    <!-- ===========================
+         HEADER
+    ============================ -->
+
+    <header class="invoice-header">
+
+        <div class="company">
+
+            <img
+                src="images/logo.png"
+                alt="HandloomHub Logo">
+
+            <div>
+
+                <h1>HandloomHub</h1>
+
+                <p>Tradition • Trust • Transparency</p>
+
+            </div>
+
+        </div>
+
+        <div class="invoice-title">
+
+            <h2>TAX INVOICE</h2>
+
+            <span>Original Copy</span>
+
+        </div>
+
+    </header>
+
+    <!-- ===========================
+         INFO
+    ============================ -->
+
+    <section class="invoice-info">
+
+        <div class="info-card">
+
+            <h3>Invoice Details</h3>
+
+            <p><strong>Invoice No :</strong> <span id="invoiceNumber"></span></p>
+
+            <p><strong>Order ID :</strong> <span id="orderId"></span></p>
+
+            <p><strong>Date :</strong> <span id="invoiceDate"></span></p>
+
+            <p><strong>Payment :</strong> <span id="paymentMethod"></span></p>
+
+        </div>
+
+        <div class="info-card">
+
+            <h3>Bill To</h3>
+
+            <p id="customerName"></p>
+
+            <p id="customerEmail"></p>
+
+            <p id="customerPhone"></p>
+
+        </div>
+
+    </section>
+
+    <!-- ===========================
+         PRODUCTS
+    ============================ -->
+
+    <table class="invoice-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Product</th>
+
+                <th>Qty</th>
+
+                <th>Price</th>
+
+                <th>Total</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="invoiceItems">
+
+        </tbody>
+
+    </table>
+
+    <!-- ===========================
+         TOTAL
+    ============================ -->
+
+    <section class="totals">
+
+        <div class="payment-status">
+
+            <h3>Payment Status</h3>
+
+            <p class="paid">✔ PAID</p>
+
+            <p>
+                Thank you for your purchase.
+            </p>
+
+        </div>
+
+        <div class="summary">
+
+            <p>
+
+                <span>Subtotal</span>
+
+                <span id="subtotal"></span>
+
+            </p>
+
+            <p>
+
+                <span>Shipping</span>
+
+                <span>FREE</span>
+
+            </p>
+
+            <p>
+
+                <span>GST (5%)</span>
+
+                <span id="gst"></span>
+
+            </p>
+
+            <h2>
+
+                <span>Grand Total</span>
+
+                <span id="grandTotal"></span>
+
+            </h2>
+
+        </div>
+
+    </section>
+
+    <div id="qrCode" style="display:none;"></div>
+
+    <!-- ===========================
+         FOOTER
+    ============================ -->
+
+    <footer class="invoice-footer">
+
+        <div>
+
+            <strong>Digital Product Passport</strong>
+
+            <p id="passportId">
+                DPP-HH-000001
+            </p>
+
+        </div>
+
+        <div>
+
+            <strong>Authorised Signature</strong>
+
+            <br><br>
+
+            _______________________
+
+        </div>
+
+    </footer>
+
+    <div class="thankyou">
+
+        ❤️ Thank you for supporting Indian Handloom Artisans.
+
+    </div>
+
+</div>
+
+<!-- ===========================
+     ACTION BUTTONS
+=========================== -->
+
+<div class="invoice-actions">
+
+    <button id="printInvoice">
+
+        🖨 Print
+
+    </button>
+
+    <button id="downloadInvoice">
+
+        ⬇ Download PDF
+
+    </button>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+<script src="js/invoice.js"></script>
+
+</body>
+
+</html>

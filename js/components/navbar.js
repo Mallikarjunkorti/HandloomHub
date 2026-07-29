@@ -2,72 +2,136 @@
 // HandloomHub Navbar
 // ======================================
 
-// Logged In User
+// Current User
 function getCurrentUser() {
+
     return JSON.parse(localStorage.getItem("loggedInUser"));
+
 }
 
-// --------------------------------------
-// Update Navbar
-// --------------------------------------
+// ======================================
+// Navbar Initialization
+// ======================================
 
 function initNavbar() {
 
     const user = getCurrentUser();
 
+    // Navbar Elements
+
     const loginLink = document.getElementById("loginLink");
     const logoutLink = document.getElementById("logoutLink");
     const adminLink = document.getElementById("adminLink");
-    const profileLink = document.getElementById("profileLink");
-    const navbarUserName = document.getElementById("navbarUserName");
-    const welcomeUser = document.getElementById("welcomeUser");
 
-    // Login / Logout
+    const profileMenu = document.getElementById("profileMenu");
 
-    if (loginLink)
-        loginLink.style.display = user ? "none" : "block";
+    const navbarUserName =
+    document.getElementById("navbarUserName");
 
-    if (logoutLink)
-        logoutLink.style.display = user ? "block" : "none";
+    const navbarProfilePhoto =
+    document.getElementById("navbarProfilePhoto");
 
-    // Welcome
+    const dropdownPhoto =
+    document.getElementById("dropdownPhoto");
 
-    if (welcomeUser) {
+    const dropdownName =
+    document.getElementById("dropdownName");
 
-        if (user) {
+    const dropdownEmail =
+    document.getElementById("dropdownEmail");
 
-            if(profileLink){
-                 profileLink.style.display = "block";
-            }
+    const welcomeUser =
+    document.getElementById("welcomeUser");
 
-            if(navbarUserName){
-                navbarUserName.textContent = user.name;
-            }
+    // -------------------------
+    // Logged In
+    // -------------------------
 
-        } else {
-                if(profileLink){
-                    profileLink.style.display = "none";
-                }
-            welcomeUser.innerHTML = "";
+    if(user){
+
+        if(loginLink)
+            loginLink.style.display="none";
+
+        if(logoutLink)
+            logoutLink.style.display="none";
+
+        if(profileMenu)
+            profileMenu.style.display="block";
+
+        if(navbarUserName)
+            navbarUserName.textContent=user.name;
+
+        if(dropdownName)
+            dropdownName.textContent=user.name;
+
+        if(dropdownEmail)
+            dropdownEmail.textContent=user.email;
+
+        
+
+        const savedPhoto=
+
+        localStorage.getItem(
+
+            `profilePhoto_${user.email}`
+
+        );
+
+        if(savedPhoto){
+
+            if(navbarProfilePhoto)
+                navbarProfilePhoto.src=savedPhoto;
+
+            if(dropdownPhoto)
+                dropdownPhoto.src=savedPhoto;
 
         }
 
     }
 
+    
+
+    // -------------------------
+    // Logged Out
+    // -------------------------
+
+    else{
+
+        if(loginLink)
+            loginLink.style.display="block";
+
+        if(logoutLink)
+            logoutLink.style.display="none";
+
+        if(profileMenu)
+            profileMenu.style.display="none";
+
+        if(welcomeUser)
+            welcomeUser.textContent="";
+
+    }
+
+    // -------------------------
     // Admin
+    // -------------------------
 
-    if (adminLink) {
+    if(adminLink){
 
-        if (
+        if(
+
             user &&
-            user.email === "mallikarjunkorti40@gmail.com"
-        ) {
 
-            adminLink.style.display = "block";
+            user.email==="mallikarjunkorti40@gmail.com"
 
-        } else {
+        ){
 
-            adminLink.style.display = "none";
+            adminLink.style.display="block";
+
+        }
+
+        else{
+
+            adminLink.style.display="none";
 
         }
 
@@ -77,19 +141,19 @@ function initNavbar() {
 
 }
 
-// --------------------------------------
-// Refresh Counts
-// --------------------------------------
+// ======================================
+// Counts
+// ======================================
 
-function refreshNavbarCounts() {
+function refreshNavbarCounts(){
 
-    if (typeof updateCartCount === "function") {
+    if(typeof updateCartCount==="function"){
 
         updateCartCount();
 
     }
 
-    if (typeof updateWishlistCount === "function") {
+    if(typeof updateWishlistCount==="function"){
 
         updateWishlistCount();
 
@@ -97,30 +161,69 @@ function refreshNavbarCounts() {
 
 }
 
-// --------------------------------------
+// ======================================
 // Logout
-// --------------------------------------
+// ======================================
 
-function logout() {
+function logout(){
 
     localStorage.removeItem("loggedInUser");
 
-    if (typeof showToast === "function") {
+    if(typeof showToast==="function"){
 
-        showToast("Logged Out Successfully 👋");
+        showToast("👋 Logged Out Successfully");
 
     }
 
-    setTimeout(() => {
+    setTimeout(function(){
 
-        window.location.href = "login.html";
+        window.location.href="login.html";
 
-    }, 500);
+    },600);
 
 }
 
-// --------------------------------------
-// Auto Initialize
-// --------------------------------------
+// ======================================
+// Auto Init
+// ======================================
 
-document.addEventListener("DOMContentLoaded", initNavbar);
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    initNavbar
+
+);
+
+// ==============================
+// Profile Dropdown
+// ==============================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const trigger = document.querySelector(".profile-trigger");
+    const dropdown = document.querySelector(".profile-dropdown");
+
+    if (!trigger || !dropdown) return;
+
+    trigger.addEventListener("click", function (e) {
+
+        e.stopPropagation();
+
+        dropdown.classList.toggle("show");
+
+    });
+
+    dropdown.addEventListener("click", function (e) {
+
+        e.stopPropagation();
+
+    });
+
+    document.addEventListener("click", function () {
+
+        dropdown.classList.remove("show");
+
+    });
+
+});

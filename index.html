@@ -62,14 +62,14 @@
     <li>
         <a href="wishlist.html">
 
-            Wishlist(<span id="wishlistCount"></span>)
+            ❤️ Wishlist(<span id="wishlistCount"></span>)
         </a>
     </li>
 
     <li>
         <a href="cart.html">
 
-            Cart(<span id="cartCount"></span>)
+            🛒 Cart(<span id="cartCount"></span>)
         </a>
     </li>
 
@@ -77,15 +77,58 @@
     <a href="login.html">Login</a>
     </li>
 
-    <li id="profileLink" style="display:none;">
-        <a href="profile.html">
-            👤 <span id="navbarUserName"></span>
-        </a>
-    </li>
+    <li id="profileMenu" class="profile-menu" style="display:none;">
 
-    <li id="logoutLink" style="display:none;">
-        <a href="#" onclick="logout()">Logout</a>
-    </li>
+    <div class="profile-trigger">
+
+        <img
+            id="navbarProfilePhoto"
+            src="images/avatar.png"
+            class="navbar-avatar"
+            alt="Profile">
+
+        <span id="navbarUserName"></span>
+
+        ▼
+
+    </div>
+
+    <div class="profile-dropdown">
+
+        <div class="dropdown-header">
+
+            <img
+                id="dropdownPhoto"
+                src="images/avatar.png"
+                class="dropdown-avatar">
+
+            <div>
+
+                <h4 id="dropdownName"></h4>
+
+                <p id="dropdownEmail"></p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <a href="profile.html">👤 My Profile</a>
+
+        <a href="orders.html">📦 My Orders</a>
+
+        <a href="wishlist.html">❤️ Wishlist</a>
+
+        <a href="profile.html#savedAddress">📍 Addresses</a>
+
+        <a href="#">⚙ Settings</a>
+
+        <a href="#" onclick="logout()">🚪 Logout</a>
+
+    </div>
+
+</li>
 
     <li id="adminLink" style="display:none;">
         <a href="admin.html">Admin</a>
@@ -93,7 +136,7 @@
 
 </ul>
 
-<span id="welcomeUser"></span>
+
 
 </nav>
     </header>
