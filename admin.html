@@ -181,6 +181,12 @@
 
     <br><br>
 
+    <div class="product-actions">
+        <button class="add-product-btn" onclick="openAddProductModal()">
+            ➕ Add Product
+        </button>
+    </div>
+
     <!-- Products Table -->
 
     <h2>Products</h2>
@@ -221,6 +227,67 @@
     </table>
 
 </section>
+
+<div id="editModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>Edit Product</h2>
+
+        <input type="hidden" id="editProductId">
+
+        <input
+            type="text"
+            id="editProductName"
+            placeholder="Product Name"
+        >
+
+        <input
+            type="number"
+            id="editProductPrice"
+            placeholder="Price"
+        >
+
+        <button onclick="saveProductChanges()">
+            💾 Save Changes
+        </button>
+
+        <button onclick="closeEditModal()">
+            ❌ Cancel
+        </button>
+
+    </div>
+
+</div>
+
+<div id="addProductModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>Add Product</h2>
+
+        <input type="text" id="productName" placeholder="Product Name">
+
+        <input type="number" id="productPrice" placeholder="Price">
+
+        <input type="text" id="productCategory" placeholder="Category">
+
+        <input type="text" id="productImage" placeholder="Image URL">
+
+        <textarea id="productDescription" placeholder="Description"></textarea>
+
+        <button onclick="saveNewProduct()">
+            ➕ Save Product
+        </button>
+
+        <button onclick="closeAddProductModal()">
+            ❌ Cancel
+        </button>
+
+    </div>
+
+</div>
+
 <div id="toast" class="toast">
     <span id="toastMessage"></span>
 </div>

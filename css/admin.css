@@ -485,3 +485,61 @@ grid-template-columns:1fr;
 .notification-item:last-child{
     border-bottom:none;
 }
+
+/*----Edit modal----*/
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-content{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    width:400px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.modal-content input{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.modal-content button{
+    padding:10px;
+    cursor:pointer;
+}
+
+/*Add Product*/
+.product-actions{
+    display:flex;
+    justify-content:flex-end;
+    margin:20px 0;
+}
+
+.add-product-btn{
+    background:#7A4E2D;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.modal textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    resize:vertical;
+    min-height:80px;
+}

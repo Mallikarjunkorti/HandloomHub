@@ -8,20 +8,26 @@ document.addEventListener("click", function (e) {
     // Add To Cart
     // ------------------------
 
-    if (e.target.classList.contains("cart-btn")) {
+   if (e.target.classList.contains("cart-btn")) {
 
-        const id = Number(e.target.dataset.id);
+    const id = e.target.dataset.id;
 
-        const product = products.find(p => p.id === id);
+    console.log("Button ID:", id);
+    console.log("Products:", products);
 
-        if (!product) return;
+    const product = products.find(p => p.id == id);
 
-        addToCart(
-            product.id,
-            product.name,
-            product.price,
-            product.image
-        );
+    console.log("Found Product:", product);
+
+    if (!product) return;
+
+    addToCart(
+        product.id,
+        product.name,
+        product.price,
+        product.image
+    );
+  
 
         return;
     }
@@ -30,23 +36,27 @@ document.addEventListener("click", function (e) {
     // Wishlist
     // ------------------------
 
-    if (e.target.classList.contains("wishlist-btn")) {
+   if (e.target.classList.contains("wishlist-btn")) {
 
-        const id = Number(e.target.dataset.id);
+    console.log("Wishlist button clicked");
 
-        const product = products.find(p => p.id === id);
+    const id = e.target.dataset.id;
 
-        if (!product) return;
+    const product = products.find(p => p.id == id);
 
-        addToWishlist(
-            product.id,
-            product.name,
-            product.price,
-            product.image
-        );
+    console.log(product);
 
-        return;
-    }
+    if (!product) return;
+
+    addToWishlist(
+        product.id,
+        product.name,
+        product.price,
+        product.image
+    );
+
+    return;
+}
 
     // ------------------------
     // Buy Now
@@ -54,28 +64,21 @@ document.addEventListener("click", function (e) {
 
     if (e.target.classList.contains("buy-btn")) {
 
-        const id = Number(e.target.dataset.id);
+        const id = e.target.dataset.id;
 
-        const product = products.find(p => p.id === id);
+        const product = products.find(p => p.id == id);
 
         if (!product) return;
 
         localStorage.setItem(
-
             getBuyNowKey(),
-
             JSON.stringify({
-
                 ...product,
-
-                quantity:1
-
+                quantity: 1
             })
-
         );
 
-        window.location.href="checkout.html";
-
+        window.location.href = "checkout.html";
     }
 
 });

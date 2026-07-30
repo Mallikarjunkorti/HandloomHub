@@ -1,3 +1,5 @@
+
+
 const user = JSON.parse(
     localStorage.getItem("loggedInUser")
 );
@@ -51,6 +53,9 @@ async function loadDashboard() {
         const products =
             await productsRes.json();
 
+        console.log("Products:", products);
+        console.log("Total Products:", products.length);    
+
         animateCounter("productCount", products.length);
 
         const productsTable =
@@ -58,21 +63,28 @@ async function loadDashboard() {
 
         productsTable.innerHTML = "";
 
-        products.forEach(product => {
+       console.log("Products received:", products);
 
-            productsTable.innerHTML += `
-                <tr>
-                    <td>${product.name}</td>
-                    <td>₹${product.price}</td>
-                    <td>
-                        <button onclick="deleteProduct('${product._id}')">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            `;
+productsTable.innerHTML = "";
 
-        });
+products.forEach((product, index) => {
+
+    console.log(index, product);
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${product.name}</td>
+        <td>₹${product.price}</td>
+        <td>
+            <button onclick="openEditProduct('${product._id}')">✏️ Edit</button>
+            <button onclick="deleteProduct('${product._id}')">🗑️ Delete</button>
+        </td>
+    `;
+
+    productsTable.appendChild(row);
+
+});
 
         // ORDERS
         const ordersRes =
@@ -240,7 +252,9 @@ ${sales} Sales
 
 }
 
-loadDashboard();
+document.addEventListener("DOMContentLoaded", () => {
+    loadDashboard();
+});
 
 
 
@@ -524,4 +538,156 @@ async function updateOrderStatus(orderId, status) {
         showToast("Unable to update order.");
 
     }
+}
+
+//Edit button---
+async function openEditProduct(id) {
+
+    try {
+
+        const response = await fetch("http://localhost:5000/api/products");
+
+        const products = await response.json();
+
+        const product = products.find(p => p._id === id);
+
+        if (!product) {
+            showToast("Product not found");
+            return;
+        }
+
+        document.getElementById("editProductId").value = product._id;
+        document.getElementById("editProductName").value = product.name;
+        document.getElementById("editProductPrice").value = product.price;
+
+        document.getElementById("editModal").style.display = "flex";
+
+    } catch (error) {
+
+        console.error(error);
+        showToast("Unable to load product");
+
+    }
+
+}
+
+function closeEditModal() {
+    document.getElementById("editModal").style.display = "none";
+}
+
+//Edit Save button---
+async function saveProductChanges() {
+
+    const id = document.getElementById("editProductId").value;
+
+    const name = document.getElementById("editProductName").value;
+
+    const price = document.getElementById("editProductPrice").value;
+
+    try {
+
+        const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                name,
+                price
+            })
+
+        });
+
+        if (!response.ok) {
+            throw new Error("Update failed");
+        }
+
+        showToast("Product updated successfully!");
+
+        closeEditModal();
+
+        loadDashboard();
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast("Unable to update product.");
+
+    }
+
+}
+
+function openAddProductModal() {
+
+    document.getElementById("addProductModal").style.display = "flex";
+
+}
+
+function closeAddProductModal() {
+
+    document.getElementById("addProductModal").style.display = "none";
+
+}
+
+async function saveNewProduct() {
+
+    const name = document.getElementById("productName").value.trim();
+    const price = document.getElementById("productPrice").value;
+    const category = document.getElementById("productCategory").value.trim();
+    const image = document.getElementById("productImage").value.trim();
+    const description = document.getElementById("productDescription").value.trim();
+
+    if (!name || !price || !category || !image || !description) {
+        showToast("Please fill all fields");
+        return;
+    }
+
+    try {
+
+        const response = await fetch("http://localhost:5000/api/products", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                name,
+                price,
+                category,
+                image,
+                description
+            })
+
+        });
+
+        if (!response.ok) {
+            throw new Error("Unable to add product");
+        }
+
+        showToast("Product added successfully!");
+
+        closeAddProductModal();
+
+        document.getElementById("productName").value = "";
+        document.getElementById("productPrice").value = "";
+        document.getElementById("productCategory").value = "";
+        document.getElementById("productImage").value = "";
+        document.getElementById("productDescription").value = "";
+
+        loadDashboard();
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast("Failed to add product.");
+
+    }
+
 }

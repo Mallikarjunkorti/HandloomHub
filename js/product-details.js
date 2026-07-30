@@ -1,150 +1,49 @@
-// ======================================
-// Get Product ID
-// ======================================
-
 const params = new URLSearchParams(window.location.search);
+const productId = params.get("id");
 
-const productId = Number(params.get("id"));
+let product = null;
 
-// ======================================
-// Find Product
-// ======================================
+async function loadProduct() {
 
-const product = products.find(p => p.id === productId);
+    try {
 
-if (!product) {
+        const response = await fetch("http://localhost:5000/api/products");
+        const products = await response.json();
 
-    window.location.href = "products.html";
+        product = products.find(p => p._id === productId);
 
-}
+        if (!product) {
+            alert("Product not found");
+            window.location.href = "products.html";
+            return;
+        }
 
-// ======================================
-// Fill Product Details
-// ======================================
+        // Compatibility values
+        product.id = product._id;
+        product.rating = product.rating || 4.5;
+        product.reviews = product.reviews || 0;
 
-document.getElementById("productImage").src = product.image;
+        // Image path
+        if (!product.image.startsWith("http")) {
+            product.image = "images/products/" + product.image;
+        }
 
-document.getElementById("productName").innerText = product.name;
+        // Fill page
+        document.getElementById("productImage").src = product.image;
+        document.getElementById("productName").textContent = product.name;
+        document.getElementById("productPrice").textContent = "₹" + product.price.toLocaleString("en-IN");
+        document.getElementById("productRating").textContent = product.rating;
+        document.getElementById("productReviews").textContent = product.reviews;
+        document.getElementById("productDescription").textContent =
+            product.description || "Authentic handcrafted product.";
 
-document.getElementById("productPrice").innerText =
-    "₹" + product.price.toLocaleString("en-IN");
+        document.getElementById("passportLink").href =
+            `passport.html?id=${product.id}`;
 
-document.getElementById("productRating").innerText =
-    product.rating || 4.8;
-
-document.getElementById("productReviews").innerText =
-    product.reviews || 0;
-
-document.getElementById("productDescription").innerText =
-    product.description ||
-    "Authentic handcrafted product made by skilled Indian artisans.";
-
-document.getElementById("passportLink").href =
-    `passport.html?id=${product.id}`;
-
-// ======================================
-// Add To Cart
-// ======================================
-
-document.getElementById("addToCartBtn")
-.addEventListener("click", function () {
-
-    const qty = Number(
-        document.getElementById("quantity").value
-    );
-
-    addToCart(
-
-        product.id,
-
-        product.name,
-
-        product.price,
-
-        product.image,
-
-        qty
-
-    );
-
-});
-
-// ======================================
-// Wishlist
-// ======================================
-
-document.getElementById("wishlistBtn")
-.addEventListener("click", function () {
-
-    addToWishlist(
-
-        product.id,
-
-        product.name,
-
-        product.price,
-
-        product.image
-
-    );
-
-});
-
-// ======================================
-// Buy Now
-// ======================================
-
-document.getElementById("buyNowBtn")
-.addEventListener("click", function () {
-
-    const qty = Number(
-        document.getElementById("quantity").value
-    );
-
-    const buyNowProduct = {
-
-        ...product,
-
-        quantity: qty
-
-    };
-
-    localStorage.setItem(
-
-        getBuyNowKey(),
-
-        JSON.stringify(buyNowProduct)
-
-    );
-
-    window.location.href = "checkout.html";
-
-});
-
-// ======================================
-// Similar Handloom Picks
-// ======================================
-
-const relatedContainer =
-    document.getElementById("relatedProducts");
-
-if (relatedContainer) {
-
-    const relatedProducts = products
-        .filter(item =>
-
-            item.category === product.category &&
-
-            item.id !== product.id
-
-        )
-        .slice(0, 4);
-
-    relatedProducts.forEach(item => {
-
-        relatedContainer.innerHTML +=
-            createProductCard(item);
-
-    });
+    } catch (err) {
+        console.error(err);
+    }
 
 }
+
+loadProduct();

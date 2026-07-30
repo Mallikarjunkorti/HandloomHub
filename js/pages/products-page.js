@@ -1,8 +1,50 @@
+//Adding New Product---
+//---------------------
+async function loadProducts() {
+
+    try {
+
+        const response = await fetch("http://localhost:5000/api/products");
+
+        products = await response.json();
+
+        // Add default values for compatibility
+        products = products.map((product, index) => ({
+
+            ...product,
+
+            id: product._id,
+
+            featured: true,
+
+            rating: product.rating || 4.5,
+
+            reviews: product.reviews || 0,
+
+            badge: product.badge || ""
+
+        }));
+
+        filteredProducts = [...products];
+
+        renderProducts();
+
+    } catch (error) {
+
+        console.error(error);
+
+        showToast("Unable to load products.");
+
+    }
+
+}
+
 // ======================================
 // Global Variables
 // ======================================
 
-let filteredProducts = [...products];
+let products = [];
+let filteredProducts = [];
 
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
@@ -28,7 +70,7 @@ function renderProducts() {
 
 }
 
-renderProducts();
+loadProducts();
 
 // ======================================
 // Apply Search + Category + Sort
@@ -154,9 +196,7 @@ document.addEventListener("click", function (e) {
     // Open Modal
     if (e.target.closest(".quick-view-trigger")) {
 
-        const id = Number(
-            e.target.closest(".quick-view-trigger").dataset.id
-        );
+        const id = e.target.closest(".quick-view-trigger").dataset.id;
 
         const product = products.find(p => p.id === id);
 
@@ -237,7 +277,7 @@ document.addEventListener("keydown", function (e) {
 document.getElementById("modalCart")
 .addEventListener("click", function () {
 
-    const id = Number(this.dataset.id);
+    const id = this.dataset.id;
 
     const product = products.find(p => p.id === id);
 
@@ -264,7 +304,7 @@ document.getElementById("modalCart")
 document.getElementById("modalBuy")
 .addEventListener("click", function () {
 
-    const id = Number(this.dataset.id);
+    const id = this.dataset.id;
 
     const product = products.find(p => p.id === id);
 
