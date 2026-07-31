@@ -580,9 +580,45 @@ async function saveProductChanges() {
 
     const id = document.getElementById("editProductId").value;
 
-    const name = document.getElementById("editProductName").value;
+    const updatedProduct = {
 
-    const price = document.getElementById("editProductPrice").value;
+        // Product
+        name: document.getElementById("editProductName").value,
+        price: Number(document.getElementById("editProductPrice").value),
+        category: document.getElementById("editProductCategory").value,
+        image: document.getElementById("editProductImage").value,
+        description: document.getElementById("editProductDescription").value,
+
+        // Artisan
+        artisanName: document.getElementById("editArtisanName").value,
+        experience: document.getElementById("editExperience").value,
+        village: document.getElementById("editVillage").value,
+        district: document.getElementById("editDistrict").value,
+        state: document.getElementById("editState").value,
+
+        // Passport
+        technique: document.getElementById("editTechnique").value,
+        days: document.getElementById("editDays").value,
+        certificate: document.getElementById("editCertificate").value,
+        issueDate: document.getElementById("editIssueDate").value,
+
+        environment:
+            document.getElementById("editEnvironment")
+            .value
+            .split(",")
+            .map(item => item.trim())
+            .filter(item => item !== ""),
+
+        map: document.getElementById("editMap").value,
+        video: document.getElementById("editVideo").value,
+
+        // Display
+        rating: Number(document.getElementById("editRating").value),
+        reviews: Number(document.getElementById("editReviews").value),
+        badge: document.getElementById("editBadge").value,
+        featured: document.getElementById("editFeatured").checked
+
+    };
 
     try {
 
@@ -594,10 +630,7 @@ async function saveProductChanges() {
                 "Content-Type": "application/json"
             },
 
-            body: JSON.stringify({
-                name,
-                price
-            })
+            body: JSON.stringify(updatedProduct)
 
         });
 
@@ -633,6 +666,7 @@ function closeAddProductModal() {
 
 }
 
+//Saving Product---
 async function saveNewProduct() {
 
     const name = document.getElementById("productName").value.trim();
@@ -640,6 +674,39 @@ async function saveNewProduct() {
     const category = document.getElementById("productCategory").value.trim();
     const image = document.getElementById("productImage").value.trim();
     const description = document.getElementById("productDescription").value.trim();
+
+    const artisanName = document.getElementById("artisanName").value.trim();
+    const experience = document.getElementById("experience").value.trim();
+    const village = document.getElementById("village").value.trim();
+    const district = document.getElementById("district").value.trim();
+    const state = document.getElementById("state").value.trim();
+
+    const technique = document.getElementById("technique").value.trim();
+    const days = document.getElementById("days").value.trim();
+    const certificate = document.getElementById("certificate").value.trim();
+    const issueDate = document.getElementById("issueDate").value;
+
+    const environment = document
+    .getElementById("environment")
+    .value
+    .split(",")
+    .map(item => item.trim())
+    .filter(item => item !== "");
+
+    const map = document.getElementById("map").value.trim();
+    const video = document.getElementById("video").value.trim();
+
+    const rating =
+    Number(document.getElementById("rating").value) || 4.5;
+
+    const reviews =
+    Number(document.getElementById("reviews").value) || 0;
+
+    const badge =
+    document.getElementById("badge").value.trim();
+
+    const featured =
+    document.getElementById("featured").checked;
 
     if (!name || !price || !category || !image || !description) {
         showToast("Please fill all fields");
@@ -657,12 +724,35 @@ async function saveNewProduct() {
             },
 
             body: JSON.stringify({
-                name,
-                price,
-                category,
-                image,
-                description
-            })
+
+        name,
+        price,
+        category,
+        image,
+        description,
+
+        artisanName,
+        experience,
+        village,
+        district,
+        state,
+
+        technique,
+        days,
+        certificate,
+        issueDate,
+
+        environment,
+
+        map,
+        video,
+
+        rating,
+        reviews,
+        badge,
+        featured
+
+     })
 
         });
 
@@ -674,19 +764,96 @@ async function saveNewProduct() {
 
         closeAddProductModal();
 
-        document.getElementById("productName").value = "";
-        document.getElementById("productPrice").value = "";
-        document.getElementById("productCategory").value = "";
-        document.getElementById("productImage").value = "";
-        document.getElementById("productDescription").value = "";
+        // Clear existing fields
+    document.getElementById("productName").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("productCategory").value = "";
+    document.getElementById("productImage").value = "";
+    document.getElementById("productDescription").value = "";
 
-        loadDashboard();
+    // Clear artisan fields
+    document.getElementById("artisanName").value = "";
+    document.getElementById("experience").value = "";
+    document.getElementById("village").value = "";
+    document.getElementById("district").value = "";
+    document.getElementById("state").value = "";
+
+    // Clear passport fields
+    document.getElementById("technique").value = "";
+    document.getElementById("days").value = "";
+    document.getElementById("certificate").value = "";
+    document.getElementById("issueDate").value = "";
+    document.getElementById("environment").value = "";
+    document.getElementById("map").value = "";
+    document.getElementById("video").value = "";
+
+    // Clear display settings
+    document.getElementById("rating").value = "";
+    document.getElementById("reviews").value = "";
+    document.getElementById("badge").value = "";
+    document.getElementById("featured").checked = false;
+
+    loadDashboard();
 
     } catch (error) {
 
         console.error(error);
 
         showToast("Failed to add product.");
+
+    }
+
+}
+
+//Editing Product---
+async function openEditProduct(id) {
+
+    try {
+
+        const response = await fetch(`http://localhost:5000/api/products/${id}`);
+
+        const product = await response.json();
+
+        document.getElementById("editProductId").value = product._id;
+
+        // Product
+        document.getElementById("editProductName").value = product.name || "";
+        document.getElementById("editProductPrice").value = product.price || "";
+        document.getElementById("editProductCategory").value = product.category || "";
+        document.getElementById("editProductImage").value = product.image || "";
+        document.getElementById("editProductDescription").value = product.description || "";
+
+        // Artisan
+        document.getElementById("editArtisanName").value = product.artisanName || "";
+        document.getElementById("editExperience").value = product.experience || "";
+        document.getElementById("editVillage").value = product.village || "";
+        document.getElementById("editDistrict").value = product.district || "";
+        document.getElementById("editState").value = product.state || "";
+
+        // Passport
+        document.getElementById("editTechnique").value = product.technique || "";
+        document.getElementById("editDays").value = product.days || "";
+        document.getElementById("editCertificate").value = product.certificate || "";
+        document.getElementById("editIssueDate").value = product.issueDate || "";
+
+        document.getElementById("editEnvironment").value =
+            (product.environment || []).join(", ");
+
+        document.getElementById("editMap").value = product.map || "";
+        document.getElementById("editVideo").value = product.video || "";
+
+        // Display
+        document.getElementById("editRating").value = product.rating || "";
+        document.getElementById("editReviews").value = product.reviews || "";
+        document.getElementById("editBadge").value = product.badge || "";
+        document.getElementById("editFeatured").checked = product.featured || false;
+
+        document.getElementById("editModal").style.display = "flex";
+
+    } catch (error) {
+
+        console.error(error);
+        showToast("Unable to load product");
 
     }
 

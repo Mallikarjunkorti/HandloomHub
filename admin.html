@@ -236,17 +236,66 @@
 
         <input type="hidden" id="editProductId">
 
-        <input
-            type="text"
-            id="editProductName"
-            placeholder="Product Name"
-        >
+        <h3>📦 Product Information</h3>
 
-        <input
-            type="number"
-            id="editProductPrice"
-            placeholder="Price"
-        >
+        <input type="text" id="editProductName" placeholder="Product Name">
+
+        <input type="number" id="editProductPrice" placeholder="Price">
+
+        <input type="text" id="editProductCategory" placeholder="Category">
+
+        <input type="text" id="editProductImage" placeholder="Image URL">
+
+        <textarea id="editProductDescription" placeholder="Description"></textarea>
+
+        <hr>
+
+        <h3>👨‍🎨 Artisan Details</h3>
+
+        <input type="text" id="editArtisanName" placeholder="Artisan Name">
+
+        <input type="text" id="editExperience" placeholder="Experience">
+
+        <input type="text" id="editVillage" placeholder="Village">
+
+        <input type="text" id="editDistrict" placeholder="District">
+
+        <input type="text" id="editState" placeholder="State">
+
+        <hr>
+
+        <h3>🛡 Digital Passport</h3>
+
+        <input type="text" id="editTechnique" placeholder="Technique">
+
+        <input type="text" id="editDays" placeholder="Days Taken">
+
+        <input type="text" id="editCertificate" placeholder="Certificate">
+
+        <input type="date" id="editIssueDate">
+
+        <textarea id="editEnvironment" placeholder="Environment (comma separated)"></textarea>
+
+        <!--<input type="url" id="editMap" placeholder="Google Map Link">
+
+        <input type="url" id="editVideo" placeholder="YouTube Link">-->
+
+        <hr>
+
+        <h3>⭐ Display Settings</h3>
+
+        <input type="number" id="editRating" placeholder="Rating">
+
+        <input type="number" id="editReviews" placeholder="Reviews">
+
+        <input type="text" id="editBadge" placeholder="Badge">
+
+        <label>
+            <input type="checkbox" id="editFeatured">
+            Featured Product
+        </label>
+
+        <br><br>
 
         <button onclick="saveProductChanges()">
             💾 Save Changes
@@ -266,23 +315,78 @@
 
         <h2>Add Product</h2>
 
-        <input type="text" id="productName" placeholder="Product Name">
+<h3>📦 Product Information</h3>
 
-        <input type="number" id="productPrice" placeholder="Price">
+<input type="text" id="productName" placeholder="Product Name">
 
-        <input type="text" id="productCategory" placeholder="Category">
+<input type="number" id="productPrice" placeholder="Price">
 
-        <input type="text" id="productImage" placeholder="Image URL">
+<input type="text" id="productCategory" placeholder="Category">
 
-        <textarea id="productDescription" placeholder="Description"></textarea>
+<input type="text" id="productImage" placeholder="Image URL">
 
-        <button onclick="saveNewProduct()">
-            ➕ Save Product
-        </button>
+<textarea id="productDescription" placeholder="Description"></textarea>
 
-        <button onclick="closeAddProductModal()">
-            ❌ Cancel
-        </button>
+<hr>
+
+<h3>👨‍🎨 Artisan Details</h3>
+
+<input type="text" id="artisanName" placeholder="Artisan Name">
+
+<input type="text" id="experience" placeholder="Experience">
+
+<input type="text" id="village" placeholder="Village">
+
+<input type="text" id="district" placeholder="District">
+
+<input type="text" id="state" placeholder="State">
+
+<hr>
+
+<h3>🛡 Digital Passport</h3>
+
+<input type="text" id="technique" placeholder="Weaving Technique">
+
+<input type="text" id="days" placeholder="Days Taken">
+
+<input type="text" id="certificate" placeholder="Certificate ID">
+
+<input type="date" id="issueDate">
+
+<textarea id="environment"
+placeholder="Environment (comma separated)"></textarea>
+
+<!--<input type="url" id="map" placeholder="Google Maps Link">
+
+<input type="url" id="video" placeholder="YouTube Video Link">--->
+
+<hr>
+
+<h3>⭐ Display Settings</h3>
+
+<input type="number" id="rating" placeholder="Rating">
+
+<input type="number" id="reviews" placeholder="Reviews">
+
+<input type="text" id="badge" placeholder="Badge">
+
+<label>
+
+<input type="checkbox" id="featured">
+
+Featured Product
+
+</label>
+
+<br><br>
+
+<button onclick="saveNewProduct()">
+➕ Save Product
+</button>
+
+<button onclick="closeAddProductModal()">
+❌ Cancel
+</button>
 
     </div>
 
