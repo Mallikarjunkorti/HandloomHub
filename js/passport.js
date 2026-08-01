@@ -37,7 +37,7 @@ async function loadPassport() {
             image = "images/products/" + image;
         }
 
-        document.getElementById("passportImage").src = image;
+        document.getElementById("passportImage").src = getProductImage(passport);
 
         // Product
         document.getElementById("certificateProduct").innerText =

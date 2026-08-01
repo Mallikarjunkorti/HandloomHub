@@ -16,10 +16,16 @@ const productSchema = new mongoose.Schema({
         required: true
     },
 
+    // Primary image (kept for compatibility)
     image: {
         type: String,
-        required: true
+        default: ""
     },
+
+    // Multiple product images
+    images: [{
+        type: String
+    }],
 
     description: {
         type: String,

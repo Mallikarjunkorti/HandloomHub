@@ -15,7 +15,7 @@ function createProductCard(product) {
             <div class="product-image-box quick-view-trigger"
                 data-id="${product.id}">
                 <img
-                    src="${product.image}"
+                    src="${getProductImage(product)}"
                     alt="${product.name}"
                     class="product-image">
             </div>

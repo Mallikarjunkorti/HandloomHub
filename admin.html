@@ -52,17 +52,6 @@
 
     <h1>Admin Dashboard</h1>
 
-    <div class="search-box">
-
-    <input
-        type="text"
-        id="dashboardSearch"
-        placeholder="🔍 Search users, products or orders..."
-        onkeyup="searchDashboard()"
-        >
-
-    </div>
-
     <div class="export-buttons">
 
      <button onclick="exportTable('usersTableExport','users.csv')">
@@ -162,6 +151,17 @@
 
 </div>
 
+<div class="search-box">
+
+    <input
+        type="text"
+        id="dashboardSearch"
+        placeholder="🔍 Search users, products or orders..."
+        onkeyup="searchDashboard()"
+        >
+
+    </div>
+
     <!-- Users Table -->
 
     <h2>Users</h2>
@@ -244,7 +244,7 @@
 
         <input type="text" id="editProductCategory" placeholder="Category">
 
-        <input type="text" id="editProductImage" placeholder="Image URL">
+        <input type="file" id="editProductImages" multiple accept="image/*">
 
         <textarea id="editProductDescription" placeholder="Description"></textarea>
 
@@ -276,9 +276,9 @@
 
         <textarea id="editEnvironment" placeholder="Environment (comma separated)"></textarea>
 
-        <!--<input type="url" id="editMap" placeholder="Google Map Link">
+        <input type="url" id="editMap" placeholder="Google Map Link">
 
-        <input type="url" id="editVideo" placeholder="YouTube Link">-->
+        <input type="url" id="editVideo" placeholder="YouTube Link">
 
         <hr>
 
@@ -323,7 +323,7 @@
 
 <input type="text" id="productCategory" placeholder="Category">
 
-<input type="text" id="productImage" placeholder="Image URL">
+<input type="file" id="productImages" multiple accept="image/*">
 
 <textarea id="productDescription" placeholder="Description"></textarea>
 
@@ -356,9 +356,9 @@
 <textarea id="environment"
 placeholder="Environment (comma separated)"></textarea>
 
-<!--<input type="url" id="map" placeholder="Google Maps Link">
+<input type="url" id="map" placeholder="Google Maps Link">
 
-<input type="url" id="video" placeholder="YouTube Video Link">--->
+<input type="url" id="video" placeholder="YouTube Video Link">
 
 <hr>
 
@@ -370,13 +370,10 @@ placeholder="Environment (comma separated)"></textarea>
 
 <input type="text" id="badge" placeholder="Badge">
 
-<label>
-
-<input type="checkbox" id="featured">
-
-Featured Product
-
-</label>
+<div class="checkbox-group">
+    <input type="checkbox" id="featured">
+    <label for="featured">Featured Product</label>
+</div>
 
 <br><br>
 
@@ -396,8 +393,17 @@ Featured Product
     <span id="toastMessage"></span>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/data/products.js"></script>
+
+<script src="js/helpers/imageHelper.js"></script>
+
+<script src="js/components/product-card.js"></script>
+
 <script src="js/admin.js"></script>
+
 <script src="js/components/toast.js"></script>
+
 <script src="js/components/navbar.js"></script>
 </body>
 </html>

@@ -35,7 +35,7 @@ async function loadProduct() {
         }
 
         // Fill page
-        document.getElementById("productImage").src = product.image;
+        document.getElementById("productImage").src = getProductImage(product);
         document.getElementById("productName").textContent = product.name;
         document.getElementById("productPrice").textContent =
             "₹" + product.price.toLocaleString("en-IN");

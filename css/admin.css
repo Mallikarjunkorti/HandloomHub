@@ -558,3 +558,24 @@ grid-template-columns:1fr;
     resize:vertical;
     min-height:80px;
 }
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}

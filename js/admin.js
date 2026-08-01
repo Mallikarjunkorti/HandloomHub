@@ -672,7 +672,7 @@ async function saveNewProduct() {
     const name = document.getElementById("productName").value.trim();
     const price = document.getElementById("productPrice").value;
     const category = document.getElementById("productCategory").value.trim();
-    const image = document.getElementById("productImage").value.trim();
+    const images = document.getElementById("productImages").files;
     const description = document.getElementById("productDescription").value.trim();
 
     const artisanName = document.getElementById("artisanName").value.trim();
@@ -708,54 +708,62 @@ async function saveNewProduct() {
     const featured =
     document.getElementById("featured").checked;
 
-    if (!name || !price || !category || !image || !description) {
+   if (
+    !name ||
+    !price ||
+    !category ||
+    images.length === 0 ||
+    !description
+    ) {
         showToast("Please fill all fields");
         return;
     }
 
     try {
 
-        const response = await fetch("http://localhost:5000/api/products", {
+        const formData = new FormData();
 
-            method: "POST",
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("category", category);
+    formData.append("description", description);
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+    formData.append("artisanName", artisanName);
+    formData.append("experience", experience);
+    formData.append("village", village);
+    formData.append("district", district);
+    formData.append("state", state);
 
-            body: JSON.stringify({
+    formData.append("technique", technique);
+    formData.append("days", days);
+    formData.append("certificate", certificate);
+    formData.append("issueDate", issueDate);
 
-        name,
-        price,
-        category,
-        image,
-        description,
+    formData.append(
+    "environment",
+    JSON.stringify(environment)
+    );
 
-        artisanName,
-        experience,
-        village,
-        district,
-        state,
+    formData.append("map", map);
+    formData.append("video", video);
 
-        technique,
-        days,
-        certificate,
-        issueDate,
+    formData.append("rating", rating);
+    formData.append("reviews", reviews);
+    formData.append("badge", badge);
+    formData.append("featured", featured);
 
-        environment,
+    for (let i = 0; i < images.length; i++) {
+    formData.append("images", images[i]);
+    }
 
-        map,
-        video,
-
-        rating,
-        reviews,
-        badge,
-        featured
-
-     })
-
-        });
-
+    const response = await fetch(
+    "http://localhost:5000/api/products",
+    {
+        method: "POST",
+        body: formData
+    }
+    );
+    console.log([...formData.entries()]);
         if (!response.ok) {
             throw new Error("Unable to add product");
         }
@@ -768,7 +776,7 @@ async function saveNewProduct() {
     document.getElementById("productName").value = "";
     document.getElementById("productPrice").value = "";
     document.getElementById("productCategory").value = "";
-    document.getElementById("productImage").value = "";
+    document.getElementById("productImages").value = "";
     document.getElementById("productDescription").value = "";
 
     // Clear artisan fields
